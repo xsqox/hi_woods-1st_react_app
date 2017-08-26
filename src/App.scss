@@ -2,6 +2,7 @@
 @import '_layout';
 @import '_menu';
 @import '_album_app';
+@import '_contact';
 
 .brand {
   font-family: $brandFont;
@@ -13,11 +14,9 @@
   cursor: pointer;
 }
 
-.hw-bio, .hw-contact {
+.view-container {
   margin: 70px 50px;
 }
-
-
 
 
 

@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
-import { PageMenu, MenuItem} from './Menu.js';
-import { AlbumApp, Playlist, Song, Listen} from './Listen.js';
+import PageMenu from './Menu.js';
+import Listen from './Listen.js';
+import Contact from './Contact.js';
 import './hover-min.css';
 import './App.css';
 
 
 //@TODO setup compass
 //@TODO create item widget
+//@TODO add sharing
+//@TODO embed Youtube video
 class App extends Component {
 
     constructor() {
@@ -47,7 +50,7 @@ class Bio extends Component {
     }
 
     render() {
-        return <div className="hw-bio">
+        return <div className="view-container hw-bio">
             <h3 className="section-heading">Hi there from <span className="brand">Hi Woods</span></h3>
             <p>I am a solo IDM band currenly located in Montreal.</p>
             <p>I bring you #post-minimal, #dream-minimal, #dance-ambient from Point Canada inspired by its vast
@@ -57,15 +60,6 @@ class Bio extends Component {
             <p>Anyway, less words, more wooods! <span onClick={() => this.switchToListen()}
                                                       className="brand brand-action">Listen</span> and I hope you enjoy!
             </p>
-        </div>
-    }
-}
-
-class Contact extends Component {
-    render() {
-        return <div className="hw-contact">
-            <h3 className="section-heading">Reach out <span className="brand">Hi Woods</span></h3>
-            <p>Solo band from vast spaces of Canada making awesome music</p>
         </div>
     }
 }

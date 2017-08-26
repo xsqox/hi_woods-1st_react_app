@@ -8,9 +8,9 @@ class AlbumApp extends Component {
             active_album: 'Point C',
             active_song: 'UA',
             playing: false,
-            source: '/public/audio/point_c/',
             albums: [{
                 name: 'Point C',
+                source: '/audio/point_c/',
                 album_cover: '/images/point_c_cover.jpg',
                 playlist: [{
                     name: 'UA',
@@ -83,7 +83,7 @@ class Song extends Component {
         return <li onClick={() => this.props.onClick(this.props.text)}
                    className={'hw-song ' + this.props.className}>
             <span className='song-name'>{this.props.text}</span>
-                   <img className='song-cover' src={this.props.image} />
+                   <img className='song-cover' src={this.props.image} alt={this.props.text + ' by Hi Woods'} />
             <span className="play-handle"></span>
         </li>
     }
@@ -132,9 +132,4 @@ class Listen extends Component {
     }
 }
 
-module.exports = {
-    AlbumApp,
-    Playlist,
-    Song,
-    Listen
-}
+export default Listen;

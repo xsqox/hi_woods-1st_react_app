@@ -49,7 +49,4 @@ class PageMenu extends Component {
     }
 }
 
-module.exports = {
-    PageMenu,
-    MenuItem
-}
+export default PageMenu;
