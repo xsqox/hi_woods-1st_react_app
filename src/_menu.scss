@@ -1,0 +1,29 @@
+// NAV MENU //
+
+.hw-menu {
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1001;
+}
+
+.hw-menu-list {
+  display: inline-block;
+  list-style-type: none;
+  float: right;
+  padding: 1em;
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 5px #ddd;
+  font-size: .8em;
+  font-family: $brandFont, cursive;
+
+  li {
+    display: inline-block;
+    margin: 0 1em;
+    transition: all 0.5s ease-out;
+  }
+}

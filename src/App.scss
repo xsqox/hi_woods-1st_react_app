@@ -1,0 +1,25 @@
+@import '_vars';
+@import '_layout';
+@import '_menu';
+@import '_album_app';
+
+.brand {
+  font-family: $brandFont;
+  font-size: 1.2em;
+}
+
+.brand-action {
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.hw-bio, .hw-contact {
+  margin: 70px 50px;
+}
+
+
+
+
+
+
+

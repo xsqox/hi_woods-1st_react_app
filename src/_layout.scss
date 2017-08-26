@@ -1,0 +1,26 @@
+// GENERAL LAYOUT //
+
+.hw-app {
+  position: relative;
+}
+
+body {
+  position: relative;
+  font-size: $defaultFontSize;
+  font-family: $defaultFontFamily;
+  font-weight: 300;
+}
+
+* {
+  margin-top: 0;
+  margin-bottom: 0;
+  box-sizing: border-box;
+}
+
+p {
+  padding: 5px 0;
+}
+
+.section-heading {
+  padding: 10px 0 10px;
+}

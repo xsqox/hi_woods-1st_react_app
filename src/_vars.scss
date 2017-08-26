@@ -1,0 +1,32 @@
+/* COLORS */
+$lightFont: #fff;
+$darkFont: #000;
+$imgBorder: 3px solid #fff;
+$galleryBorder: 1px solid #fff;
+
+/*fonts */
+$defaultFontSize: 16px;
+$defaultFontFamily: 'Open Sans', sans-serif;
+$brandFont: 'manic-depressiveregular', serif;
+
+/* FONTS
+==========================================*/
+@font-face {
+  font-family: 'Strange Rituals';
+  src: url('/fonts/strange_rituals-webfont.eot');
+  src: url('/fonts/strange_rituals-webfont.ttf');
+  src: url('/fonts/strange_rituals-webfont.woff');
+  src: url('/fonts/strange_rituals.eot');
+  src: url('/fonts/strange_rituals.otf');
+}
+
+@font-face {
+  font-family: 'manic-depressiveregular';
+  src: url('/fonts/manic-depressive-webfont.eot'), url('/fonts/manic-depressive-webfont.eot?#iefix') format('embedded-opentype'),
+  url('/fonts/manic-depressive-webfont.woff2') format('woff2'),
+  url('/fonts/manic-depressive-webfont.woff') format('woff'),
+  url('/fonts/manic-depressive-webfont.ttf') format('truetype'),
+  url('/fonts/manic-depressive-webfont.svg#manic-depressiveregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
