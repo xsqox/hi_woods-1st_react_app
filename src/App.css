@@ -23,7 +23,9 @@ body {
   position: relative;
   font-size: 16px;
   font-family: "Open Sans", sans-serif;
-  font-weight: 300; }
+  font-weight: 300;
+  background: url("../public/images/bg_cover.jpg") no-repeat fixed;
+  background-size: 100% 100%; }
 
 * {
   margin-top: 0;
@@ -154,3 +156,6 @@ ul {
 
 .view-container {
   margin: 70px 50px; }
+
+pre {
+  display: inline-block; }

@@ -53,11 +53,11 @@ class Bio extends Component {
         return <div className="view-container hw-bio">
             <h3 className="section-heading">Hi there from <span className="brand">Hi Woods</span></h3>
             <p>I am a solo IDM band currenly located in Montreal.</p>
-            <p>I bring you #post-minimal, #dream-minimal, #dance-ambient from Point Canada inspired by its vast
+            <p>I bring you <pre>#post-minimal</pre>, <pre>#dream-minimal</pre>, <pre>#dance-ambient</pre> from Point Canada inspired by its vast
                 spaces.</p>
             <p>These are rainfallish beats of minimal techno coupled with funky synth tranform into trippy dream hop
                 just to give way to airy piano passages...</p>
-            <p>Anyway, less words, more wooods! <span onClick={() => this.switchToListen()}
+            <p>Anyway, less words, more woods! <span onClick={() => this.switchToListen()}
                                                       className="brand brand-action">Listen</span> and I hope you enjoy!
             </p>
         </div>

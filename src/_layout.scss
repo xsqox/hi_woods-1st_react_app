@@ -9,6 +9,8 @@ body {
   font-size: $defaultFontSize;
   font-family: $defaultFontFamily;
   font-weight: 300;
+  background: url('../public/images/bg_cover.jpg') no-repeat fixed;
+  background-size: 100% 100%;
 }
 
 * {
