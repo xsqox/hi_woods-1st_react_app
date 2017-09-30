@@ -67,6 +67,26 @@ class AlbumApp extends Component {
                     }]
             }]
         }
+        this.updateDimensions = this.updateDimensions.bind(this);
+    }
+
+    componentDidMount() {
+        window.addEventListener('resize', this.updateDimensions);
+    }
+
+    componentWillMount() {
+        this.updateDimensions();
+    }
+
+    updateDimensions() {
+        this.setState({
+            dimensions: {
+                viewportWidth: window.innerWidth,
+                viewportHeight: window.innerHeight,
+                songWidth: 200,
+                songHeight: 200,
+            }
+        })
     }
 
     switchSong(song) {
