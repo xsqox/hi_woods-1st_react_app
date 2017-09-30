@@ -16,33 +16,13 @@ import './App.css';
 
 class App extends Component {
 
-    // Manual implementation of router
-    // constructor() {
-    //     super();
-    //     this.state = {
-    //         active_menu_item: '/'
-    //     }
-    //     this.views = {
-    //         '/': <Bio relay={this.changeMenu.bind(this)}/>,
-    //         '/listen': <Listen />,
-    //         '/contact': <Contact />
-    //     }
-    // }
-    //
-    // changeMenu(url) {
-    //     this.setState({active_menu_item: url});
-    // }
-
     render() {
-        // var activeApp = this.views[this.state.active_menu_item]; // updating activeApp when active menu item has changed
         return (
             <div className="hw-app">
                 <div className="hw-menu">
-                    {/*<PageMenu relay={this.changeMenu.bind(this)}/>*/}
                     <PageMenu />
                 </div>
                 <div className="hw-main">
-                    {/*{activeApp}*/}
                     <Main />
                 </div>
             </div>

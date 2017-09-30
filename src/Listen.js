@@ -138,6 +138,7 @@ class AlbumApp extends Component {
                         fullPlayer={true}
                         autoPlay={false}
                         playlist={playlist}
+
                         // store a reference of the audio component
                         ref={audioComponent => {
                             this.audioComponent = audioComponent;
