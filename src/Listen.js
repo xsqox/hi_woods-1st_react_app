@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
 import Audio from 'react-audioplayer';
 
 class AlbumApp extends Component {
@@ -6,6 +7,12 @@ class AlbumApp extends Component {
     constructor() {
         super();
         this.state = {
+            dimensions: {
+                viewportWidth: window.innerWidth,
+                viewportHeight: window.innerHeight,
+                songWidth: 200,
+                songHeight: 200,
+            },
             active_album: 'Point C',
             active_song: 'UA',
             playing: false,
@@ -15,19 +22,24 @@ class AlbumApp extends Component {
                 album_cover: '/images/point_c_cover.jpg',
                 playlist: [{
                     name: 'UA',
-                    'image': '/images/albums/point_c/ua.jpg'
+                    img: '/images/albums/point_c/ua.jpg',
+                    src: '/audio/point_c/laird.mp3'
                 }, {
                     name: 'XC',
-                    'image': '/images/albums/point_c/xc.jpg'
+                    img: '/images/albums/point_c/xc.jpg',
+                    src: '/audio/point_c/polaris.mp3'
                 }, {
                     name: 'yo_sun',
-                    'image': '/images/albums/point_c/yo_sun.jpg'
+                    img: '/images/albums/point_c/yo_sun.jpg',
+                    src: '/audio/point_c/silensia.mp3'
                 }, {
                     name: 'through_the_needles',
-                    'image': '/images/albums/point_c/through_the_needles.jpg'
+                    img: '/images/albums/point_c/through_the_needles.jpg',
+                    src: '/audio/point_c/vertigo.mp3'
                 }, {
                     name: 'planet_search',
-                    'image': '/images/albums/point_c/planet_search.jpg'
+                    img: '/images/albums/point_c/planet_search.jpg',
+                    src: '/audio/point_c/yes_today_no_tomorrow.mp3'
                 }]
             }]
         }
@@ -39,10 +51,10 @@ class AlbumApp extends Component {
         if (indx !== -1) {
             this.activateSong(playlist[indx]);
         }
+        this.selectSongInPlayer(song);
     }
 
     activateSong(song) {
-        console.log('song to activate', song);
         this.setState({'active_song': song.name, playing: true});
     }
 
@@ -56,19 +68,39 @@ class AlbumApp extends Component {
         return playlist;
     }
 
+    selectSongInPlayer(song) {
+        let playlist = this.getActivePlaylist();
+        let clickedSong = playlist.indexOf(song);
+
+        // methods of react-audioplayer - public calls ???
+        this.audioComponent.setState({'currentPlaylistPos': clickedSong});
+        this.audioComponent.loadSrc();
+        ReactDOM.findDOMNode(this.audioComponent).dispatchEvent(new Event('audio-play'));
+    }
+
     render() {
         let active_album = this.getActiveAlbum();
         let playlist = active_album.playlist;
         let album_cover = active_album.album_cover;
         if (this.state.playing) {
             let active_song = playlist.find(song => song.name === this.state.active_song);
-            album_cover = active_song.image;
+            album_cover = active_song.img;
         }
 
         return (
             <div className="hw-player">
-                <div className="hw-album-active">
-                    <img className='album-cover' src={album_cover} alt="Point C by Hi Woods"/>
+                <div className="hw-player-component">
+                    <Audio
+                        width={this.state.dimensions.viewportWidth - this.state.dimensions.songWidth}
+                        height={this.state.dimensions.viewportHeight}
+                        fullPlayer={true}
+                        autoPlay={false}
+                        playlist={playlist}
+                        // store a reference of the audio component
+                        ref={audioComponent => {
+                            this.audioComponent = audioComponent;
+                        }}
+                    />
                 </div>
                 <div className="hw-playlist-container">
                     <Playlist playlist={playlist} relay={this.switchSong.bind(this)}/>
@@ -84,7 +116,7 @@ class Song extends Component {
         return <li onClick={() => this.props.onClick(this.props.text)}
                    className={'hw-song ' + this.props.className}>
             <span className='song-name'>{this.props.text}</span>
-                   <img className='song-cover' src={this.props.image} alt={this.props.text + ' by Hi Woods'} />
+            <img className='song-cover' src={this.props.img} alt={this.props.text + ' by Hi Woods'}/>
             <span className="play-handle"></span>
         </li>
     }
@@ -110,7 +142,7 @@ class Playlist extends Component {
         return <Song className={classNme}
                      text={song.name}
                      key={idx}
-                     image={song.image}
+                     img={song.img}
                      onClick={() => this.handleClick(song)}
         />
     }

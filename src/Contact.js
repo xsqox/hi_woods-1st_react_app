@@ -22,7 +22,7 @@ class Contact extends Component {
         let items = this.state.contacts.map(this.generateItem, this);
         return <div className='view-container hw-contact-info'>
             <h3 className="section-heading">Reach out to <span className="brand">Hi Woods</span></h3>
-            <p>I am totally open for cooperation or gigs.
+            <p>I am totally open for collboration or gigs.
                 Let me know what you have in mind by dropping a note at <a href='mailto:hiwoodse@gmail.com'>hiwoodse@gmail.com</a>.</p>
             <p>You can also find me around the Web.
                 Feel free to leave your feedback or support with likes and shares (actually, will be much appreciated {'\u2764'}).</p>

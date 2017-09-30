@@ -6,7 +6,16 @@
 
 .hw-player {
   width: 100%;
+  height: 100%;
   position: relative;
+}
+
+.hw-player-component {
+  position: fixed;
+
+  .audioElements__btnStack___JMnsK {
+    background: $player_bg;
+  }
 }
 
 .hw-album-active {
@@ -28,6 +37,7 @@
 .hw-playlist-container {
   position: absolute;
   right: 0;
+  top: 0;
   z-index: 1001;
   background: #ddd;
   opacity: 0.9;
@@ -39,15 +49,14 @@
 
   .hw-song {
     position: relative;
-    padding-top: 0.5em;
     font-weight: 300;
     font-family: $brandFont, cursive;
     text-shadow: 1px 1px 5px #ddd;
     text-align: center;
     display: block;
-    width: 17vw;
-    height: 17vw;
-    margin: 0.5em;
+    width: 175px;
+    height: 175px;
+    margin: 5px;
     font-size: 1.1em;
     border: 2px solid #000000;
 
@@ -56,6 +65,10 @@
       top: 5px;
       left: 0;
       right: 0;
+      max-width: 160px;
+      overflow-wrap: normal;
+      word-break: normal;
+      display: inline-block;
       margin: auto;
       z-index: 1001;
     }
@@ -86,5 +99,6 @@
     border-left: 20px solid #000000;
     opacity: 0.7;
     z-index: 1001;
+    cursor: pointer;
   }
 }
