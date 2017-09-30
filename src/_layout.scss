@@ -27,8 +27,25 @@ p {
   padding: 10px 0 10px;
 }
 
+.view-container {
+  margin: 60px 50px;
+}
+
 ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+
+a {
+  color: #000000;
+
+  &:visited {
+    color: $darkFont;
+  }
+
+  &:focus {
+    color: #000000;
+    text-shadow: 1px 1px 5px #ddd;
+  }
 }

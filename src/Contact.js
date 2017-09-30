@@ -15,17 +15,17 @@ class Contact extends Component {
     }
 
     generateItem(item, idx) {
-        return <ContactInfo url={item.url} key={idx} />
+        return <ContactInfo item={item} key={idx} />
     }
 
     render() {
         let items = this.state.contacts.map(this.generateItem, this);
         return <div className='view-container hw-contact-info'>
             <h3 className="section-heading">Reach out to <span className="brand">Hi Woods</span></h3>
-            <p>I am totally open for cooperation or gig opportunities.
-                Just let me know what you have in mind by dropping me a note at <a href='mailto:hiwoodse@gmail.com'>hiwoodse@gmail.com</a>.</p>
+            <p>I am totally open for cooperation or gigs.
+                Let me know what you have in mind by dropping a note at <a href='mailto:hiwoodse@gmail.com'>hiwoodse@gmail.com</a>.</p>
             <p>You can also find me around the Web.
-                Feel free to leave me feedback or support me with likes or shares (actually, will be much appreciated {'\u2764'}).</p>
+                Feel free to leave your feedback or support with likes and shares (actually, will be much appreciated {'\u2764'}).</p>
             <ul className='hw-contacts'>
                 {items}
             </ul>
@@ -38,7 +38,7 @@ class ContactInfo extends Component {
 
     render() {
         return (
-            <li className='contact-link'><a href={this.props.url}>{this.props.url}</a></li>
+            <li className='contact-link'><a href={this.props.item.url}>{this.props.item.platform}</a></li>
         )
     }
 }

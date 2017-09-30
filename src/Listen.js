@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Audio from 'react-audioplayer';
 
 class AlbumApp extends Component {
 

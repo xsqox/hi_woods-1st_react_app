@@ -21,7 +21,7 @@
 
 body {
   position: relative;
-  font-size: 16px;
+  font-size: 20x;
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
   background: url("../public/images/bg_cover.jpg") no-repeat fixed;
@@ -38,10 +38,21 @@ p {
 .section-heading {
   padding: 10px 0 10px; }
 
+.view-container {
+  margin: 60px 50px; }
+
 ul {
   list-style-type: none;
   margin: 0;
   padding: 0; }
+
+a {
+  color: #000000; }
+  a:visited {
+    color: #000; }
+  a:focus {
+    color: #000000;
+    text-shadow: 1px 1px 5px #ddd; }
 
 .hw-menu {
   overflow: auto;
@@ -140,6 +151,7 @@ ul {
 
 .hw-contacts {
   list-style-type: none;
+  margin-top: 15px;
   margin-left: 0;
   padding: 0; }
 
@@ -153,9 +165,6 @@ ul {
 .brand-action {
   font-size: 1.5em;
   cursor: pointer; }
-
-.view-container {
-  margin: 70px 50px; }
 
 pre {
   display: inline-block; }

@@ -10,6 +10,9 @@ import './App.css';
 //@TODO create item widget
 //@TODO add sharing
 //@TODO embed Youtube video
+//@TODO add player
+//@TODO add gallery / Instagram feed
+//@TODO 
 class App extends Component {
 
     constructor() {
@@ -53,12 +56,12 @@ class Bio extends Component {
         return <div className="view-container hw-bio">
             <h3 className="section-heading">Hi there from <span className="brand">Hi Woods</span></h3>
             <p>I am a solo IDM band currenly located in Montreal.</p>
-            <p>I bring you <pre>#post-minimal</pre>, <pre>#dream-minimal</pre>, <pre>#dance-ambient</pre> from Point Canada inspired by its vast
+            <p>I bring you <pre>#post-minimal</pre>, <pre>#dream-minimal</pre>, <pre>#dance-ambient</pre> from Point Canada inspired by vast
                 spaces.</p>
-            <p>These are rainfallish beats of minimal techno coupled with funky synth tranform into trippy dream hop
+            <p>It's rainfallish techno beats coupled with funky synth slowly transforming into trippy dream hop
                 just to give way to airy piano passages...</p>
             <p>Anyway, less words, more woods! <span onClick={() => this.switchToListen()}
-                                                      className="brand brand-action">Listen</span> and I hope you enjoy!
+                                                      className="brand brand-action">Listen</span> and I hope you enjoy.
             </p>
         </div>
     }
