@@ -20,27 +20,51 @@ class AlbumApp extends Component {
                 name: 'Point C',
                 source: '/audio/point_c/',
                 album_cover: '/images/point_c_cover.jpg',
-                playlist: [{
-                    name: 'UA',
-                    img: '/images/albums/point_c/ua.jpg',
-                    src: '/audio/point_c/laird.mp3'
-                }, {
-                    name: 'XC',
-                    img: '/images/albums/point_c/xc.jpg',
-                    src: '/audio/point_c/polaris.mp3'
-                }, {
-                    name: 'yo_sun',
-                    img: '/images/albums/point_c/yo_sun.jpg',
-                    src: '/audio/point_c/silensia.mp3'
-                }, {
-                    name: 'through_the_needles',
-                    img: '/images/albums/point_c/through_the_needles.jpg',
-                    src: '/audio/point_c/vertigo.mp3'
-                }, {
-                    name: 'planet_search',
-                    img: '/images/albums/point_c/planet_search.jpg',
-                    src: '/audio/point_c/yes_today_no_tomorrow.mp3'
-                }]
+                playlist: [
+                    {
+                        name: 'Mayday Flower',
+                        img: '/images/albums/point_c/mayday_flower.jpg',
+                        src: '/audio/point_c/01_mayday_flower.mp3'
+                    },
+                    {
+                        name: 'This thing',
+                        img: '/images/albums/point_c/this_thing.jpg',
+                        src: '/audio/point_c/02_this_thing.mp3'
+                    },
+                    {
+                        name: 'Yoshta Vibe',
+                        img: '/images/albums/point_c/yoshta_vibe.jpg',
+                        src: '/audio/point_c/03_yoshta_vibe.mp3'
+                    },
+                    {
+                        name: 'Thru the needles',
+                        img: '/images/albums/point_c/through_the_needles.jpg',
+                        src: '/audio/point_c/04_thru_the_needles.mp3'
+                    },
+                    {
+                        name: 'Planet Search',
+                        img: '/images/albums/point_c/planet_search.jpg',
+                        src: '/audio/point_c/05_planet_search.mp3'
+                    },
+                    {
+                        name: 'Ocean Ambrozee',
+                        img: '/images/albums/point_c/ocean_ambrozee.jpg',
+                        src: '/audio/point_c/06_ocean_ambrozee.mp3'
+                    },
+                    {
+                        name: 'Yo Sun',
+                        img: '/images/albums/point_c/yo_sun.jpg',
+                        src: '/audio/point_c/07_yo_sun.mp3'
+                    },
+                    {
+                        name: 'UA',
+                        img: '/images/albums/point_c/ua.jpg',
+                        src: '/audio/point_c/08_UA.mp3'
+                    }, {
+                        name: 'XC',
+                        img: '/images/albums/point_c/xc.jpg',
+                        src: '/audio/point_c/09_XC.mp3'
+                    }]
             }]
         }
     }
@@ -51,7 +75,7 @@ class AlbumApp extends Component {
         if (indx !== -1) {
             this.activateSong(playlist[indx]);
         }
-        this.selectSongInPlayer(song);
+        this.playSongInPlayer(song);
     }
 
     activateSong(song) {
@@ -68,10 +92,8 @@ class AlbumApp extends Component {
         return playlist;
     }
 
-    selectSongInPlayer(song) {
-        let playlist = this.getActivePlaylist();
-        let clickedSong = playlist.indexOf(song);
-
+    playSongInPlayer(song) {
+        let clickedSong = this.getActivePlaylist().indexOf(song);
         // methods of react-audioplayer - public calls ???
         this.audioComponent.setState({'currentPlaylistPos': clickedSong});
         this.audioComponent.loadSrc();

@@ -9,10 +9,10 @@ import './App.css';
 
 
 //@TODO setup compass
-//@TODO create item widget
 //@TODO add sharing
 //@TODO embed Youtube video
 //@TODO add gallery / Instagram feed
+//@TODO add albums
 
 class App extends Component {
 
