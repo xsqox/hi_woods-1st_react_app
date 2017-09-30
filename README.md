@@ -1,4 +1,4 @@
-First React app for home music band website
+# First React app for home music band website
 
 Current implementation
 - SPA routing with react-router-dom
