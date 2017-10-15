@@ -25,7 +25,8 @@ body {
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
   background: url("../public/images/bg_cover.jpg") no-repeat fixed;
-  background-size: 100% 100%; }
+  background-size: 100% 100%;
+  height: 100%; }
 
 * {
   margin-top: 0;
@@ -105,62 +106,62 @@ a {
     height: 100%; }
 
 .hw-playlist-container {
-  position: absolute;
+  position: fixed;
+  overflow-y: scroll;
+  height: 100%;
+  border-left: 1px solid #000;
   right: 0;
   top: 0;
   z-index: 1001;
-  background: #ddd;
-  opacity: 0.9; }
+  background: #fff;
+  opacity: 1; }
 
 .hw-playlist {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  aligh-items: stretch; }
   .hw-playlist .hw-song {
+    flex-basis: 100%;
     position: relative;
     font-weight: 300;
+    vertical-align: middle;
+    width: 200px;
     font-family: "manic-depressiveregular", serif, cursive;
     text-shadow: 1px 1px 5px #ddd;
-    text-align: center;
-    display: block;
-    width: 175px;
-    height: 175px;
+    text-align: left;
     margin: 5px;
+    padding: 5px;
     font-size: 1.1em;
     border: 2px solid #000000; }
+    .hw-playlist .hw-song .hw-song-content {
+      height: 100%;
+      display: table; }
     .hw-playlist .hw-song .song-name {
-      position: absolute;
-      top: 5px;
-      left: 0;
-      right: 0;
+      display: table-cell;
+      vertical-align: middle;
       max-width: 160px;
       overflow-wrap: normal;
       word-break: normal;
-      display: inline-block;
       margin: auto;
-      z-index: 1001; }
-    .hw-playlist .hw-song .song-cover {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 999; }
+      text-align: left; }
+  .hw-playlist .play-handle-wrapper {
+    display: table-cell;
+    width: 25px;
+    padding-right: 5px;
+    vertical-align: middle; }
   .hw-playlist .play-handle {
     display: inline-block;
+    vertical-align: middle;
     transition: all 1s ease-out;
-    position: absolute;
-    margin: auto;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 0;
-    height: 0;
+    vertical-align: middle;
     border-top: 15px solid transparent;
     border-bottom: 15px solid transparent;
     border-left: 20px solid #000000;
     opacity: 0.7;
-    z-index: 1001;
     cursor: pointer; }
 
 .hw-contacts {

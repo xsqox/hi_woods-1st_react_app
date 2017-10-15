@@ -10,11 +10,10 @@ class AlbumApp extends Component {
             dimensions: {
                 viewportWidth: window.innerWidth,
                 viewportHeight: window.innerHeight,
-                songWidth: 200,
-                songHeight: 200,
+                songWidth: 210
             },
-            active_album: 'Point C',
-            active_song: 'UA',
+            active_album: 'Vertigo',
+            active_song: 'Vertigo',
             playing: false,
             albums: [{
                 name: 'Point C',
@@ -65,6 +64,41 @@ class AlbumApp extends Component {
                         img: '/images/albums/point_c/xc.jpg',
                         src: '/audio/point_c/09_XC.mp3'
                     }]
+            }, {
+                name: 'Vertigo',
+                source: '/audio/vertigo/',
+                album_cover: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                playlist: [
+                    {
+                        name: 'Vertigo',
+                        img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                        src: '/audio/vertigo/vertigo.mp3'
+                    },
+                    {
+                        name: 'Dream Place',
+                        img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                        src: '/audio/vertigo/laird.mp3'
+                    },
+                    {
+                        name: 'Laird',
+                        img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                        src: '/audio/vertigo/laird.mp3'
+                    },
+                    {
+                        name: 'Silensia',
+                        img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                        src: '/audio/vertigo/mountain_dew.mp3'
+                    },
+                    {
+                        name: 'Yes Today, No Tomorrow',
+                        img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                        src: '/audio/vertigo/yes_today_no_tomorrow.mp3'
+                    },
+                    {
+                        name: 'Polaris',
+                        img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                        src: '/audio/vertigo/polaris.mp3'
+                    }]
             }]
         }
         this.updateDimensions = this.updateDimensions.bind(this);
@@ -83,8 +117,7 @@ class AlbumApp extends Component {
             dimensions: {
                 viewportWidth: window.innerWidth,
                 viewportHeight: window.innerHeight,
-                songWidth: 200,
-                songHeight: 200,
+                songWidth: 210
             }
         })
     }
@@ -158,9 +191,12 @@ class Song extends Component {
     render() {
         return <li onClick={() => this.props.onClick(this.props.text)}
                    className={'hw-song ' + this.props.className}>
-            <span className='song-name'>{this.props.text}</span>
-            <img className='song-cover' src={this.props.img} alt={this.props.text + ' by Hi Woods'}/>
-            <span className="play-handle"></span>
+            <div className="hw-song-content">
+                <span className="play-handle-wrapper">
+                    <span className="play-handle"></span>
+                </span>
+                <span className='song-name'>{this.props.text}</span>
+            </div>
         </li>
     }
 }
