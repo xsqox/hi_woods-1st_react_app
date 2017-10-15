@@ -12,7 +12,8 @@ import './App.css';
 //@TODO add sharing
 //@TODO embed Youtube video
 //@TODO add gallery / Instagram feed
-//@TODO add albums
+//@TODO fix bug with playing the first song first, and only then switch
+//@TODO add full page scrolling
 
 class App extends Component {
 

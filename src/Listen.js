@@ -10,13 +10,51 @@ class AlbumApp extends Component {
             dimensions: {
                 viewportWidth: window.innerWidth,
                 viewportHeight: window.innerHeight,
-                songWidth: 210
+                songWidth: 200
             },
-            active_album: 'Vertigo',
             active_song: 'Vertigo',
             playing: false,
             albums: [{
+                name: 'Vertigo',
+                year: '2017',
+                active: true,
+                source: '/audio/vertigo/',
+                album_cover: '/images/albums/vertigo/wideangle_vertigo_monoton_all.jpg',
+                playlist: [
+                    {
+                        name: 'Vertigo',
+                        img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                        src: '/audio/vertigo/vertigo.mp3'
+                    },
+                    {
+                        name: 'Dream Place',
+                        img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                        src: '/audio/vertigo/laird.mp3'
+                    },
+                    {
+                        name: 'Laird',
+                        img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                        src: '/audio/vertigo/laird.mp3'
+                    },
+                    {
+                        name: 'Silensia',
+                        img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                        src: '/audio/vertigo/mountain_dew.mp3'
+                    },
+                    {
+                        name: 'Yes Today, No Tomorrow',
+                        img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                        src: '/audio/vertigo/yes_today_no_tomorrow.mp3'
+                    },
+                    {
+                        name: 'Polaris',
+                        img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                        src: '/audio/vertigo/polaris.mp3'
+                    }]
+            }, {
                 name: 'Point C',
+                year: '2015',
+                active: false,
                 source: '/audio/point_c/',
                 album_cover: '/images/point_c_cover.jpg',
                 playlist: [
@@ -64,44 +102,19 @@ class AlbumApp extends Component {
                         img: '/images/albums/point_c/xc.jpg',
                         src: '/audio/point_c/09_XC.mp3'
                     }]
-            }, {
-                name: 'Vertigo',
-                source: '/audio/vertigo/',
-                album_cover: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
-                playlist: [
-                    {
-                        name: 'Vertigo',
-                        img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
-                        src: '/audio/vertigo/vertigo.mp3'
-                    },
-                    {
-                        name: 'Dream Place',
-                        img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
-                        src: '/audio/vertigo/laird.mp3'
-                    },
-                    {
-                        name: 'Laird',
-                        img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
-                        src: '/audio/vertigo/laird.mp3'
-                    },
-                    {
-                        name: 'Silensia',
-                        img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
-                        src: '/audio/vertigo/mountain_dew.mp3'
-                    },
-                    {
-                        name: 'Yes Today, No Tomorrow',
-                        img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
-                        src: '/audio/vertigo/yes_today_no_tomorrow.mp3'
-                    },
-                    {
-                        name: 'Polaris',
-                        img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
-                        src: '/audio/vertigo/polaris.mp3'
-                    }]
-            }]
+            },]
         }
         this.updateDimensions = this.updateDimensions.bind(this);
+    }
+
+    updateDimensions() {
+        this.setState({
+            dimensions: {
+                viewportWidth: window.innerWidth,
+                viewportHeight: window.innerHeight,
+                songWidth: 200
+            }
+        })
     }
 
     componentDidMount() {
@@ -112,15 +125,6 @@ class AlbumApp extends Component {
         this.updateDimensions();
     }
 
-    updateDimensions() {
-        this.setState({
-            dimensions: {
-                viewportWidth: window.innerWidth,
-                viewportHeight: window.innerHeight,
-                songWidth: 210
-            }
-        })
-    }
 
     switchSong(song) {
         let playlist = this.getActivePlaylist();
@@ -135,9 +139,32 @@ class AlbumApp extends Component {
         this.setState({'active_song': song.name, playing: true});
     }
 
+    activateAlbum(albumName) {
+        // activate album and the first song from it
+        var active_song, albums = this.state.albums;
+        albums.forEach((album) => {
+            if (album.name === albumName) {
+                album.active = true;
+                active_song = album.playlist[0];
+            } else {
+                album.active = false;
+            }
+        });
+        this.setState(
+            {
+                albums: albums,
+                active_album: albumName,
+                active_song: active_song.name,
+                playing: true
+            }
+        );
+        // play song in player
+        this.audioComponent.loadSrc();
+        ReactDOM.findDOMNode(this.audioComponent).dispatchEvent(new Event('audio-play'));
+    }
+
     getActiveAlbum() {
-        let active_album = this.state.active_album;
-        return this.state.albums.find((album) => album.name === active_album);
+        return this.state.albums.find((album) => album.active);
     }
 
     getActivePlaylist() {
@@ -153,13 +180,23 @@ class AlbumApp extends Component {
         ReactDOM.findDOMNode(this.audioComponent).dispatchEvent(new Event('audio-play'));
     }
 
+    generateAlbumPlaylist(album) {
+        return <Playlist
+            active={album.active}
+            key={album.name}
+            playlist={album.playlist}
+            albumName={album.name}
+            year={album.year}
+            relay={this.switchSong.bind(this)}
+            albumRelay={this.activateAlbum.bind(this)}
+        />
+    }
+
     render() {
         let active_album = this.getActiveAlbum();
         let playlist = active_album.playlist;
-        let album_cover = active_album.album_cover;
         if (this.state.playing) {
             let active_song = playlist.find(song => song.name === this.state.active_song);
-            album_cover = active_song.img;
         }
 
         return (
@@ -179,7 +216,7 @@ class AlbumApp extends Component {
                     />
                 </div>
                 <div className="hw-playlist-container">
-                    <Playlist playlist={playlist} relay={this.switchSong.bind(this)}/>
+                    {this.state.albums.map((album) => {return this.generateAlbumPlaylist(album)})}
                 </div>
             </div>
         )
@@ -203,15 +240,20 @@ class Song extends Component {
 
 class Playlist extends Component {
 
-    constructor() {
+    constructor(props) {
         super();
         this.state = {
-            active: 0,
+            active: props.active,
+            playlistShown: props.active
         }
     }
 
     handleClick(song) {
         this.props.relay(song);
+    }
+
+    handleAlbumClick(albumName) {
+        this.props.albumRelay(albumName);
     }
 
     renderSong(song, idx) {
@@ -226,12 +268,27 @@ class Playlist extends Component {
         />
     }
 
+    togglePlaylist (albumName) {
+        this.setState({playlistShown: !this.state.playlistShown})
+    }
+
     render() {
         let items = this.props.playlist.map(this.renderSong, this);
+        let playlistClass = this.state.playlistShown ? 'hw-playlist' : 'hw-playlist hidden';
         return (
-            <ul className="hw-playlist">
+        <div className="hw-album-playlist">
+            <div className="hw-album-toggler">
+                <span onClick={() => this.handleAlbumClick(this.props.albumName)} className="hw-album-name">{this.props.albumName + ' (' + this.props.year + ')'}</span>
+                <span className="play-handle-wrapper" onClick={() => this.togglePlaylist(this.props.albumName)}>
+                    <span className="play-album-handle"></span>
+                </span>
+            </div>
+
+            <ul className={playlistClass}>
                 {items}
             </ul>
+        </div>
+
         )
     }
 }

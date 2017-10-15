@@ -55,6 +55,9 @@ a {
     color: #000000;
     text-shadow: 1px 1px 5px #ddd; }
 
+.hidden {
+  display: none !important; }
+
 .hw-menu {
   overflow: auto;
   position: fixed;
@@ -114,55 +117,73 @@ a {
   top: 0;
   z-index: 1001;
   background: #fff;
-  opacity: 1; }
+  opacity: 1;
+  width: 220px; }
 
 .hw-playlist {
-  margin: 0;
+  margin-left: 10px;
   padding: 0;
   display: flex;
   flex-direction: column;
   height: 100%;
   justify-content: space-between;
   aligh-items: stretch; }
-  .hw-playlist .hw-song {
-    flex-basis: 100%;
-    position: relative;
-    font-weight: 300;
-    vertical-align: middle;
-    width: 200px;
-    font-family: "manic-depressiveregular", serif, cursive;
-    text-shadow: 1px 1px 5px #ddd;
-    text-align: left;
-    margin: 5px;
-    padding: 5px;
-    font-size: 1.1em;
-    border: 2px solid #000000; }
-    .hw-playlist .hw-song .hw-song-content {
-      height: 100%;
-      display: table; }
-    .hw-playlist .hw-song .song-name {
-      display: table-cell;
-      vertical-align: middle;
-      max-width: 160px;
-      overflow-wrap: normal;
-      word-break: normal;
-      margin: auto;
-      text-align: left; }
-  .hw-playlist .play-handle-wrapper {
+
+.hw-song {
+  flex-basis: 100%;
+  position: relative;
+  font-weight: 300;
+  vertical-align: middle;
+  width: 180px;
+  font-family: "manic-depressiveregular", serif, cursive;
+  text-align: left;
+  margin: 5px;
+  padding: 5px;
+  font-size: 1em; }
+  .hw-song .hw-song-content, .hw-song .hw-album-toggler {
+    height: 100%;
+    display: table; }
+  .hw-song .song-name {
     display: table-cell;
-    width: 25px;
-    padding-right: 5px;
-    vertical-align: middle; }
-  .hw-playlist .play-handle {
-    display: inline-block;
     vertical-align: middle;
-    transition: all 1s ease-out;
-    vertical-align: middle;
-    border-top: 15px solid transparent;
-    border-bottom: 15px solid transparent;
-    border-left: 20px solid #000000;
-    opacity: 0.7;
-    cursor: pointer; }
+    max-width: 160px;
+    overflow-wrap: normal;
+    word-break: normal;
+    margin: auto;
+    text-align: left; }
+
+.hw-album-toggler {
+  height: 100%;
+  display: table;
+  width: 180px;
+  font-family: "manic-depressiveregular", serif, cursive;
+  text-shadow: 1px 1px 5px #ddd;
+  text-align: left;
+  margin: 5px;
+  padding: 5px;
+  font-size: 1.1em; }
+
+.play-handle-wrapper {
+  display: table-cell;
+  width: 25px;
+  padding-right: 5px;
+  vertical-align: middle; }
+
+.play-handle, .play-album-handle {
+  display: inline-block;
+  vertical-align: middle;
+  transition: all 1s ease-out;
+  vertical-align: middle;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 13px solid #000000;
+  opacity: 0.7;
+  cursor: pointer; }
+
+.play-album-handle {
+  border-top: 10px solid #000000;
+  border-right: 7px solid transparent;
+  border-left: 7px solid transparent; }
 
 .hw-contacts {
   list-style-type: none;
