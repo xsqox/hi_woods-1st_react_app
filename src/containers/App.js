@@ -9,6 +9,7 @@ import '../styles/App.css';
 
 
 //@TODO fix bug with playing the first song first, and only then switch
+//@TODO fix scrolling bug on playlist
 //@TODO extend react-audioplayer to switch to .gif when play starts
 //@TODO setup compass
 //@TODO add sharing
@@ -44,7 +45,7 @@ class App extends Component {
         let options = {
             activeClass: 'active',
             sectionClassName: 'section',
-            anchors: ['home', 'listen', 'contact'],
+            anchors: ['about', 'listen', 'contact'],
             scrollBar: false,
             delay: 500,
             navigation: false,

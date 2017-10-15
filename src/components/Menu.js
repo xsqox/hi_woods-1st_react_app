@@ -17,7 +17,7 @@ class PageMenu extends Component {
         super();
         this.state = {
             menuItems: [
-                {id: 1, text: 'Home', url: '#home'},
+                {id: 1, text: 'About', url: '#about'},
                 {id: 2, text: 'Listen', url: '#listen'},
                 {id: 3, text: 'Contact', url: '#contact'}]
         }
