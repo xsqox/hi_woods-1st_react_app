@@ -6,7 +6,11 @@ class MenuItem extends Component {
 
     render() {
         return <li className='hover-shadow'>
-            <NavLink onClick={() => this.props.onClick(this.props.url)} exact activeClassName='active' to={this.props.url}>{this.props.text}</NavLink>
+            <NavLink onClick={() => this.props.onClick(this.props.url)}
+                     exact
+                     activeClassName='active'
+                     to={this.props.url}>{this.props.text}
+            </NavLink>
         </li>
     }
 }

@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 class Bio extends Component {
 
+    //@TODO remove router
     switchToListen() {
         this.props.relay('#listen');
     }

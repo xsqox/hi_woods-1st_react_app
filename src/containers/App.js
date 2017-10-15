@@ -19,28 +19,6 @@ import '../styles/App.css';
 
 class App extends Component {
 
-
-    scrollToAnchor = () => {
-        const hashParts = window.location.hash.split('#');
-        if (hashParts.length > 2) {
-            const hash = hashParts.slice(-1)[0];
-            document.querySelector(`${hash}`).scrollIntoView();
-        }
-    };
-
-    componentDidMount() {
-        // Decode entities in the URL
-        window.location.hash = window.decodeURIComponent(window.location.hash);
-        this.scrollToAnchor();
-        window.onhashchange = this.scrollToAnchor.bind(this);
-    }
-
-    handleMenuClick(hash) {
-        document.querySelector(`${hash}`).scrollIntoView();
-        this.scrollToAnchor();
-        window.onhashchange = this.scrollToAnchor.bind(this);
-    }
-
     render() {
         let options = {
             activeClass: 'active',
@@ -53,7 +31,6 @@ class App extends Component {
             sectionPaddingTop: '0',
             sectionPaddingBottom: '0',
             arrowNavigation: true,
-            // navigationClass: 'scroll-navigation'
         };
 
         return (
@@ -68,9 +45,32 @@ class App extends Component {
                         <Section><Contact /></Section>
                     </SectionsContainer>
                 </div>
-
             </div>
         )
+    }
+
+    componentDidMount() {
+        // Decode entities in the URL
+        window.location.hash = window.decodeURIComponent(window.location.hash);
+        this.scrollToAnchor();
+        window.onhashchange = this.scrollToAnchor.bind(this);
+    }
+
+    handleMenuClick(hash) {
+        document.querySelector(`${hash}`).scrollIntoView();
+        this.scrollToAnchor();
+        window.onhashchange = this.scrollToAnchor.bind(this);
+    }
+
+    scrollToAnchor () {
+        window.location.hash = window.decodeURIComponent(window.location.hash);
+        const hashParts = window.location.hash.split('#');
+        if (hashParts.length > 2) {
+            const hash = hashParts.slice(-1)[0];
+            document.querySelector(`${hash}`).scrollIntoView();
+        } else {
+            document.querySelector(`${'about'}`).scrollIntoView();
+        }
     }
 }
 

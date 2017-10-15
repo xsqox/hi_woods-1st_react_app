@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Audio from 'react-audioplayer';
 import Playlist from '../components/Playlist.js';
 
-class AlbumApp extends Component {
+class AudioPlayer extends Component {
 
     constructor() {
         super();
@@ -201,7 +201,7 @@ class AlbumApp extends Component {
         }
 
         return (
-            <div className="hw-player">
+            <div className="full-view-container hw-player">
                 <div className="hw-player-component">
                     <Audio
                         width={this.state.dimensions.viewportWidth - this.state.dimensions.songWidth}
@@ -221,14 +221,6 @@ class AlbumApp extends Component {
                 </div>
             </div>
         )
-    }
-}
-
-class AudioPlayer extends Component {
-    render() {
-        return <div className="hw-listen">
-            <AlbumApp/>
-        </div>
     }
 }
 

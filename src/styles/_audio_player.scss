@@ -1,47 +1,22 @@
 // ALBUM APP //
 
-.hw-album-active {
-  position: relative;
-}
-
-.hw-player {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
+// OVERWRITES FOR REACT-AUDIOPLAYER
 .hw-player-component {
-
   .audioElements__btnStack___JMnsK {
     background: $player_bg;
   }
 }
 
-.hw-album-active {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-
-  .album-cover {
-    width: 100%;
-    height: 100%;
-  }
-}
-
-
 //** PLAYLIST **//
 .hw-playlist-container {
   position: absolute;
-  overflow-y: scroll;
-  height: 100%;
-  border-left: 1px solid #000;
   right: 0;
   top: 0;
-  z-index: 1001;
-  background: #fff;
+  overflow-y: scroll;
+  height: 100%;
+  border-left: 1px solid $darkFont;
+  z-index: 111;
+  background: $player_bg;
   opacity: 1;
   width: 220px;
 }
@@ -51,72 +26,65 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  height: 100%;
   justify-content: space-between;
   aligh-items: stretch;
 }
 
-  .hw-song {
-    flex-basis: 100%;
-    position: relative;
-    font-weight: 300;
-    vertical-align:middle;
-    width: 180px;
-    font-family: $brandFont, cursive;
-    text-align: left;
-    margin: 5px;
-    padding: 5px;
-    font-size: 1em;
+.hw-song-content, .hw-album-toggler {
+  height: 100%;
+  display: table;
+}
 
-   .hw-song-content, .hw-album-toggler {
-     height: 100%;
-     display: table;
-   }
+.hw-song {
+  flex-basis: 100%;
+  position: relative;
+  width: 180px;
+  vertical-align: middle;
+  font-family: $brandFont, cursive;
+  text-align: left;
+  margin: 5px;
+  padding: 0px 5px;
+  font-size: 1em;
 
-    .song-name {
-      display: table-cell;
-      vertical-align: middle;
-      max-width: 160px;
-      overflow-wrap: normal;
-      word-break: normal;
-      margin: auto;
-      text-align: left;
-    }
-  }
-
-  .hw-album-toggler {
-    height: 100%;
-    display: table;
-    width: 180px;
-    font-family: $brandFont, cursive;
-    text-shadow: 1px 1px 5px #ddd;
-    text-align: left;
-    margin: 5px;
-    padding: 5px;
-    font-size: 1.1em;
-  }
-
-  .play-handle-wrapper {
+  .song-name {
     display: table-cell;
-    width: 25px;
-    padding-right: 5px;
     vertical-align: middle;
+    max-width: 160px;
+    overflow-wrap: normal;
+    word-break: normal;
+    text-align: left;
   }
+}
 
-  .play-handle, .play-album-handle {
-    display: inline-block;
-    vertical-align: middle;
-    transition: all 1s ease-out;
-    vertical-align: middle;
-    border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent;
-    border-left: 13px solid #000000;
-    opacity: 0.7;
-    cursor: pointer;
-  }
+.hw-album-toggler {
+  width: 180px;
+  font-family: $brandFont, cursive;
+  text-align: left;
+  margin: 5px;
+  padding: 5px;
+  font-size: 1.1em;
+}
 
-  .play-album-handle {
-    border-top: 10px solid #000000;
-    border-right: 7px solid transparent;
-    border-left: 7px solid transparent;
-  }
+.play-handle-wrapper {
+  display: table-cell;
+  width: 25px;
+  padding-right: 5px;
+  vertical-align: middle;
+}
+
+.play-handle, .play-album-handle {
+  display: inline-block;
+  vertical-align: middle;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 13px solid $darkFont;
+  transition: all 1s ease-out;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.play-album-handle {
+  border-top: 10px solid $darkFont;
+  border-right: 7px solid transparent;
+  border-left: 7px solid transparent;
+}
