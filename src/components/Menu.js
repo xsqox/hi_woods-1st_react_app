@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { NavLink } from 'react-router-dom';
-import './hover-min.css';
-import './App.css';
+import '../styles/hover-min.css';
 
 class MenuItem extends Component {
 

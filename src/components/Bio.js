@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 class Bio extends Component {
 
     switchToListen() {
-        this.props.relay('/listen');
+        this.props.relay('#listen');
     }
 
     render() {
@@ -15,10 +15,7 @@ class Bio extends Component {
                 spaces, I bring you <tt>#post-minimal</tt>, <tt>#dream-minimal</tt>, <tt>#dance-ambient</tt> from Point Canada.</p>
             <p>It's rainfallish techno beats coupled with funky synth slowly transforming into trippy dream hop
                 just to give way to airy piano passages...</p>
-            {/*<p>Anyway, less words, more woods! <span onClick={() => this.switchToListen()}*/}
-                                                     {/*className="brand brand-action">Listen</span> and I hope you enjoy.*/}
-            {/*</p>*/}
-            <p>Anyway, less words, more woods! <NavLink className="brand brand-action" to='/listen'>Listen</NavLink> and I hope you enjoy.
+            <p>Anyway, less words, more woods! <NavLink className="brand brand-action" to='#listen'>Listen</NavLink> and I hope you enjoy.
             </p>
         </div>
     }

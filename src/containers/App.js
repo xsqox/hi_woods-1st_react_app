@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {SectionsContainer, Section, Header} from 'react-fullpage';
-import PageMenu from './Menu.js';
-import Listen from './Listen.js';
-import Bio from './Bio.js';
-import Contact from './Contact.js';
-import './hover-min.css';
-import './App.css';
+import PageMenu from '../components/Menu.js';
+import AudioPlayer from './AudioPlayer.js';
+import Bio from '../components/Bio.js';
+import Contact from '../components/Contact.js';
+import '../styles/hover-min.css';
+import '../styles/App.css';
 
 
 //@TODO fix bug with playing the first song first, and only then switch
@@ -63,7 +63,7 @@ class App extends Component {
                 <div className="hw-main">
                     <SectionsContainer {...options} ref={sectionsContainer => {this.sectionsContainer = sectionsContainer} }>
                         <Section><Bio /></Section>
-                        <Section><Listen /></Section>
+                        <Section><AudioPlayer /></Section>
                         <Section><Contact /></Section>
                     </SectionsContainer>
                 </div>

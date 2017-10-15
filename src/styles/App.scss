@@ -1,8 +1,8 @@
-@import '_vars';
-@import '_layout';
-@import '_menu';
-@import '_album_app';
-@import '_contact';
+@import 'vars';
+@import 'layout';
+@import 'menu';
+@import 'audio_player';
+@import 'contact';
 
 .brand {
   font-family: $brandFont;
