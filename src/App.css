@@ -67,7 +67,6 @@ a {
 
 .hw-menu-list {
   display: inline-block;
-  float: right;
   padding: 1em;
   color: #000;
   font-weight: bold;
@@ -92,10 +91,8 @@ a {
   height: 100%;
   position: relative; }
 
-.hw-player-component {
-  position: fixed; }
-  .hw-player-component .audioElements__btnStack___JMnsK {
-    background: #fff; }
+.hw-player-component .audioElements__btnStack___JMnsK {
+  background: #fff; }
 
 .hw-album-active {
   width: 100%;
@@ -109,7 +106,7 @@ a {
     height: 100%; }
 
 .hw-playlist-container {
-  position: fixed;
+  position: absolute;
   overflow-y: scroll;
   height: 100%;
   border-left: 1px solid #000;

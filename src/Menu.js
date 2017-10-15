@@ -4,9 +4,10 @@ import './hover-min.css';
 import './App.css';
 
 class MenuItem extends Component {
+
     render() {
         return <li className='hover-shadow'>
-            <NavLink exact activeClassName='active' to={this.props.url}>{this.props.text}</NavLink>
+            <NavLink onClick={() => this.props.onClick(this.props.url)} exact activeClassName='active' to={this.props.url}>{this.props.text}</NavLink>
         </li>
     }
 }
@@ -17,16 +18,19 @@ class PageMenu extends Component {
         super();
         this.state = {
             menuItems: [
-                {id: 1, text: 'Home', url: '/'},
-                {id: 2, text: 'Listen', url: '/listen'},
-                {id: 3, text: 'Contact', url: '/contact'}]
+                {id: 1, text: 'Home', url: '#home'},
+                {id: 2, text: 'Listen', url: '#listen'},
+                {id: 3, text: 'Contact', url: '#contact'}]
         }
+    }
+
+    handleClick(hash) {
+        this.props.menuClickRelay(hash);
     }
 
     generateItem(item) {
         return <MenuItem text={item.text} url={item.url}
-                         key={item.id}
-        />
+                         key={item.id} onClick={() => {this.handleClick(item.url)}}  />
     }
 
     render() {

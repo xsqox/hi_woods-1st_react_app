@@ -11,7 +11,6 @@
 }
 
 .hw-player-component {
-  position: fixed;
 
   .audioElements__btnStack___JMnsK {
     background: $player_bg;
@@ -35,7 +34,7 @@
 
 //** PLAYLIST **//
 .hw-playlist-container {
-  position: fixed;
+  position: absolute;
   overflow-y: scroll;
   height: 100%;
   border-left: 1px solid #000;

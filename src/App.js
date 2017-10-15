@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Switch, Route } from 'react-router-dom';
+import {SectionsContainer, Section, Header} from 'react-fullpage';
 import PageMenu from './Menu.js';
 import Listen from './Listen.js';
 import Bio from './Bio.js';
@@ -8,37 +8,69 @@ import './hover-min.css';
 import './App.css';
 
 
+//@TODO fix bug with playing the first song first, and only then switch
+//@TODO extend react-audioplayer to switch to .gif when play starts
 //@TODO setup compass
 //@TODO add sharing
 //@TODO embed Youtube video
 //@TODO add gallery / Instagram feed
-//@TODO fix bug with playing the first song first, and only then switch
-//@TODO add full page scrolling
+
 
 class App extends Component {
 
+
+    scrollToAnchor = () => {
+        const hashParts = window.location.hash.split('#');
+        if (hashParts.length > 2) {
+            const hash = hashParts.slice(-1)[0];
+            document.querySelector(`${hash}`).scrollIntoView();
+        }
+    };
+
+    componentDidMount() {
+        // Decode entities in the URL
+        window.location.hash = window.decodeURIComponent(window.location.hash);
+        this.scrollToAnchor();
+        window.onhashchange = this.scrollToAnchor.bind(this);
+    }
+
+    handleMenuClick(hash) {
+        document.querySelector(`${hash}`).scrollIntoView();
+        this.scrollToAnchor();
+        window.onhashchange = this.scrollToAnchor.bind(this);
+    }
+
     render() {
+        let options = {
+            activeClass: 'active',
+            sectionClassName: 'section',
+            anchors: ['home', 'listen', 'contact'],
+            scrollBar: false,
+            delay: 500,
+            navigation: false,
+            verticalAlign: false,
+            sectionPaddingTop: '0',
+            sectionPaddingBottom: '0',
+            arrowNavigation: true,
+            // navigationClass: 'scroll-navigation'
+        };
+
         return (
             <div className="hw-app">
-                <div className="hw-menu">
-                    <PageMenu />
-                </div>
+                <Header>
+                    <PageMenu menuClickRelay={this.handleMenuClick.bind(this)}/>
+                </Header>
                 <div className="hw-main">
-                    <Main />
+                    <SectionsContainer {...options} ref={sectionsContainer => {this.sectionsContainer = sectionsContainer} }>
+                        <Section><Bio /></Section>
+                        <Section><Listen /></Section>
+                        <Section><Contact /></Section>
+                    </SectionsContainer>
                 </div>
+
             </div>
         )
     }
 }
-
-const Main = () => (
-    <main>
-        <Switch>
-            <Route exact path='/' component={Bio}/>
-            <Route exact path='/listen' component={Listen}/>
-            <Route exact path='/contact' component={Contact}/>
-        </Switch>
-    </main>
-)
 
 export default App;

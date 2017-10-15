@@ -215,7 +215,7 @@ class AlbumApp extends Component {
                         }}
                     />
                 </div>
-                <div className="hw-playlist-container">
+                <div className="hw-playlist-container" >
                     {this.state.albums.map((album) => {return this.generateAlbumPlaylist(album)})}
                 </div>
             </div>
