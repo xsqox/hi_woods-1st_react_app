@@ -16,7 +16,7 @@ class Bio extends Component {
                 spaces, we bring you <tt>#post-minimal</tt>, <tt>#dream-minimal</tt>, <tt>#dance-ambient</tt> from Point Canada.</p>
             <p>It's rainfallish techno beats coupled with funky synth slowly transforming into trippy dream hop
                 just to give way to airy piano passages...</p>
-            <p>Anyway, less words, more woods! <a className="brand brand-action" href='#listen'>Listen</a> and I hope you enjoy.
+            <p>Anyway, less words, more woods! <a className="brand brand-action" href='#listen'>Listen</a> and hope you enjoy.
             </p>
         </div>
     }
