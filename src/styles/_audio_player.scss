@@ -54,8 +54,8 @@
   font-family: $player_font, cursive;
   text-align: left;
   margin: 5px;
-  padding: 0px 5px;
-  font-size: 1em;
+  padding: 5px;
+  font-size: 0.8em;
 
   .song-name {
     display: table-cell;
@@ -73,64 +73,63 @@
   text-align: left;
   margin: 5px;
   padding: 5px;
-  font-size: 1.1em;
-
+  font-size: 1em;
 
   .hw-album-name {
     display: inline-block;
     width: 100%;
   }
 
-  .glitch{
+  .glitch {
     color: $darkerFont;
-    font-size: 1.1em;
+    font-size: 1em;
     position: relative;
     display: inline-block;
     width: 100%;
-    margin:0 auto;
+    margin: 0 auto;
   }
 
-  @keyframes noise-anim{
-    $steps:20;
-    @for $i from 0 through $steps{
-      #{percentage($i*(1/$steps))}{
-        clip:rect(random(100)+px,9999px,random(100)+px,0);
+  @keyframes noise-anim {
+    $steps: 20;
+    @for $i from 0 through $steps {
+      #{percentage($i*(1/$steps))} {
+        clip: rect(random(100)+px, 9999px, random(100)+px, 0);
       }
     }
   }
 
-  .glitch:after{
-    content:attr(data-text);
-    position:absolute;
+  .glitch:after {
+    content: attr(data-text);
+    position: absolute;
     left: 1px;
     text-shadow: -1px 0 red;
     top: 0;
     color: $darkerFont;
     background: $player_bg;
     overflow: hidden;
-    clip: rect(0,900px,0,0);
+    clip: rect(0, 900px, 0, 0);
     animation: noise-anim 2s infinite linear alternate-reverse;
   }
 
-  @keyframes noise-anim-2{
-    $steps:20;
-    @for $i from 0 through $steps{
-      #{percentage($i*(1/$steps))}{
-        clip:rect(random(100)+px,9999px,random(100)+px,0);
+  @keyframes noise-anim-2 {
+    $steps: 20;
+    @for $i from 0 through $steps {
+      #{percentage($i*(1/$steps))} {
+        clip: rect(random(100)+px, 9999px, random(100)+px, 0);
       }
     }
   }
-  .glitch:before{
-    content:attr(data-text);
-    position:absolute;
+  .glitch:before {
+    content: attr(data-text);
+    position: absolute;
     left: -1px;
-    text-shadow:1px 0 blue;
-    top:0;
-    color:$darkerFont;
-    background:$player_bg;
-    overflow:hidden;
-    clip:rect(0,900px,0,0);
-    animation:noise-anim-2 3s infinite linear alternate-reverse;
+    text-shadow: 1px 0 blue;
+    top: 0;
+    color: $darkerFont;
+    background: $player_bg;
+    overflow: hidden;
+    clip: rect(0, 900px, 0, 0);
+    animation: noise-anim-2 3s infinite linear alternate-reverse;
   }
 }
 
@@ -139,33 +138,23 @@
   width: 25px;
   padding-right: 5px;
   vertical-align: middle;
+  text-align: center;
 }
 
 .handle-circle {
   display: inline-block;
   vertical-align: middle;
   position: relative;
-  border: 1px solid $darkerFont;
-  border-radius: 50%;
-  width: 17px;
-  height: 17px;
-
-  &:before {
-    content: '';
-    vertical-align: middle;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 5px 0 5px 10px;
-    border-color: transparent transparent transparent $darkerFont;
-    transition: all 1s ease-out;
-    opacity: 0.7;
-    cursor: pointer;
-    position: absolute;
-    top: calc(50% - 5px);
-    left: calc(50% - 3.5px);
-    margin: auto;
-  }
+  margin: 0 auto;
+  vertical-align: middle;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 4px 0 4px 8px;
+  border-color: transparent transparent transparent $darkerFont;
+  transition: all 1s ease-out;
+  opacity: 0.7;
+  cursor: pointer;
 }
 
 .play-handle, .play-album-handle {
@@ -180,7 +169,7 @@
 }
 
 .play-album-handle {
-  border-top: 10px solid $darkFont;
-  border-right: 7px solid transparent;
-  border-left: 7px solid transparent;
+  border-style: solid;
+  border-width: 10px 5px 0 5px;
+  border-color: $darkerFont transparent transparent transparent;
 }

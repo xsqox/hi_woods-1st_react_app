@@ -91,51 +91,51 @@ class AudioPlayer extends Component {
                 name: 'Point C',
                 year: '2015',
                 source: '/audio/point_c/',
-                album_cover: '/images/point_c_cover.jpg',
-                album_gif: '/images/point_c_cover.jpg',
+                album_cover: '/images/albums/point_c/point_c_cover.jpg',
+                album_gif: '/images/albums/point_c/point_c_glow_sun.gif',
                 playlist: [
                     {
                         name: 'Mayday Flower',
-                        img: '/images/albums/point_c/mayday_flower.jpg',
+                        img: '/images/albums/point_c/point_c_cover.jpg',
                         src: '/audio/point_c/01_mayday_flower.mp3'
                     },
                     {
                         name: 'This thing',
-                        img: '/images/albums/point_c/this_thing.jpg',
+                        img: '/images/albums/point_c/point_c_cover.jpg',
                         src: '/audio/point_c/02_this_thing.mp3'
                     },
                     {
                         name: 'Yoshta Vibe',
-                        img: '/images/albums/point_c/yoshta_vibe.jpg',
+                        img: '/images/albums/point_c/point_c_cover.jpg',
                         src: '/audio/point_c/03_yoshta_vibe.mp3'
                     },
                     {
                         name: 'Thru the needles',
-                        img: '/images/albums/point_c/through_the_needles.jpg',
+                        img: '/images/albums/point_c/point_c_cover.jpg',
                         src: '/audio/point_c/04_thru_the_needles.mp3'
                     },
                     {
                         name: 'Planet Search',
-                        img: '/images/albums/point_c/planet_search.jpg',
+                        img: '/images/albums/point_c/point_c_cover.jpg',
                         src: '/audio/point_c/05_planet_search.mp3'
                     },
                     {
                         name: 'Ocean Ambrozee',
-                        img: '/images/albums/point_c/ocean_ambrozee.jpg',
+                        img: '/images/albums/point_c/point_c_cover.jpg',
                         src: '/audio/point_c/06_ocean_ambrozee.mp3'
                     },
                     {
                         name: 'Yo Sun',
-                        img: '/images/albums/point_c/yo_sun.jpg',
+                        img: '/images/albums/point_c/point_c_cover.jpg',
                         src: '/audio/point_c/07_yo_sun.mp3'
                     },
                     {
                         name: 'UA',
-                        img: '/images/albums/point_c/ua.jpg',
+                        img: '/images/albums/point_c/point_c_cover.jpg',
                         src: '/audio/point_c/08_UA.mp3'
                     }, {
                         name: 'XC',
-                        img: '/images/albums/point_c/xc.jpg',
+                        img: '/images/albums/point_c/point_c_cover.jpg',
                         src: '/audio/point_c/09_XC.mp3'
                     }]
             },]
