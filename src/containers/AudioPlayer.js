@@ -13,12 +13,16 @@ class AudioPlayer extends Component {
                 viewportHeight: window.innerHeight,
                 songWidth: 200
             },
-            active_song: 'Vertigo',
+            active_song:  {
+                name: 'Vertigo',
+                img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                src: '/audio/vertigo/vertigo.mp3'
+            },
+            active_album: 'Vertigo',
             playing: false,
             albums: [{
                 name: 'Vertigo',
                 year: '2017',
-                active: true,
                 source: '/audio/vertigo/',
                 album_cover: '/images/albums/vertigo/wideangle_vertigo_monoton_all.jpg',
                 album_gif: '/images/albums/vertigo/vertigo_cover_noise.jpg',
@@ -124,82 +128,14 @@ class AudioPlayer extends Component {
         this.updateDimensions = this.updateDimensions.bind(this);
     }
 
-    updateDimensions() {
-        this.setState({
-            dimensions: {
-                viewportWidth: window.innerWidth,
-                viewportHeight: window.innerHeight,
-                songWidth: 200
-            }
-        })
-    }
-
-    componentDidMount() {
-        window.addEventListener('resize', this.updateDimensions);
-    }
-
-    componentWillMount() {
-        this.updateDimensions();
-    }
-
-
-    switchSong(song) {
-        let playlist = this.getActivePlaylist();
-        let indx = playlist.indexOf(song);
-        if (indx !== -1) {
-            this.activateSong(playlist[indx]);
-        }
-        this.playSongInPlayer(song);
-    }
-
-    activateSong(song) {
-        this.setState({'active_song': song.name, playing: true});
-    }
-
-    activateAlbum(albumName) {
-        // activate album and the first song from it
-        let active_song, albums = this.state.albums;
-        albums.forEach((album) => {
-            if (album.name === albumName) {
-                album.active = true;
-                active_song = album.playlist[0];
-            } else {
-                album.active = false;
-            }
-        });
-        this.setState(
-            {
-                albums: albums,
-                active_album: albumName,
-                active_song: active_song.name,
-                playing: true
-            }
-        );
-        // play song in player
-        this.audioComponent.loadSrc();
-        ReactDOM.findDOMNode(this.audioComponent).dispatchEvent(new Event('audio-play'));
-    }
-
-    getActiveAlbum() {
-        return this.state.albums.find((album) => album.active);
-    }
-
-    getActivePlaylist() {
-        let playlist = this.getActiveAlbum().playlist;
-        return playlist;
-    }
-
-    playSongInPlayer(song) {
-        let clickedSong = this.getActivePlaylist().indexOf(song);
-        // methods of react-audioplayer - public calls ???
-        this.audioComponent.setState({'currentPlaylistPos': clickedSong});
-        this.audioComponent.loadSrc();
-        ReactDOM.findDOMNode(this.audioComponent).dispatchEvent(new Event('audio-play'));
-    }
-
+    /**
+     * Generates playlist component for each album passed
+     * @param album
+     * @returns {XML}
+     */
     generateAlbumPlaylist(album) {
         return <Playlist
-            active={album.active}
+            active={album.name === this.state.active_album ? true : false}
             key={album.name}
             playlist={album.playlist}
             albumName={album.name}
@@ -210,12 +146,6 @@ class AudioPlayer extends Component {
     }
 
     render() {
-        let active_album = this.getActiveAlbum();
-        let playlist = active_album.playlist;
-        if (this.state.playing) {
-            let active_song = playlist.find(song => song.name === this.state.active_song);
-        }
-
         return (
             <div className="full-view-container hw-player">
                 <div className="hw-player-component">
@@ -224,7 +154,7 @@ class AudioPlayer extends Component {
                         height={this.state.dimensions.viewportHeight}
                         fullPlayer={true}
                         autoPlay={false}
-                        playlist={playlist}
+                        playlist={this.getActivePlaylist()}
 
                         // store a reference of the audio component
                         ref={audioComponent => {
@@ -237,6 +167,121 @@ class AudioPlayer extends Component {
                 </div>
             </div>
         )
+    }
+
+    componentDidMount() {
+        window.addEventListener('resize', this.updateDimensions);
+    }
+
+    componentWillMount() {
+        this.updateDimensions();
+    }
+
+    updateDimensions() {
+        this.setState({
+            dimensions: {
+                viewportWidth: window.innerWidth,
+                viewportHeight: window.innerHeight,
+                songWidth: 200
+            }
+        })
+    }
+
+    /**
+     * Switches active song as clicked in a playlist
+     * @param song
+     */
+    switchSong(song) {
+        let songAlbum = this.getSongAlbum(song);
+        let playlist = this.getPlayListByAlbumName(songAlbum.name);
+        let indx = playlist.indexOf(song);
+        if (indx !== -1) {
+            this.setState(
+                {
+                    'active_album': songAlbum.name,
+                    'active_song': song,
+                    playing: true},
+                this.playSongInPlayer.bind(this, song)); // callback to activate song in player
+        }
+    }
+
+    /**
+     * Returns album object to which a selected song belongs
+     * @param song
+     * @returns {*}
+     */
+    getSongAlbum(song) {
+        let songAlbum = this.getActiveAlbum();
+        this.state.albums.forEach((album) => {
+            album.playlist.forEach(track => {
+                if (track === song) {
+                    songAlbum = album;
+                }
+            })
+        });
+        return songAlbum;
+    }
+
+    /**
+     * Activates album as selected in the playlist section, triggers playback in player
+     * @param albumName
+     * @param song
+     */
+    activateAlbum(albumName, song) {
+        // activate album and first song from it, if song is not provided
+        let active_song = (song) ? song : this.getPlayListByAlbumName(albumName)[0];
+        this.setState(
+            {
+                active_album: albumName,
+                active_song: active_song,
+                playing: true
+            }, this.playSongInPlayer.bind(this, active_song)
+        );
+    }
+
+    // HELPER FUNCTIONS //
+    /**
+     * Returns active album name
+     * @returns {string}
+     */
+    getActiveAlbum() {
+        return this.state.active_album;
+    }
+
+    /**
+     * Returns active playlist array
+     * @returns {Array|value.playlist|{name, src, img, comments}|HOCAudioComponent.propTypes.playlist}
+     */
+    getActivePlaylist() {
+        return this.state.albums.find((album) => album.name === this.state.active_album).playlist;
+    }
+
+    /**
+     * Returns playlist array by album name
+     * @param albumName
+     * @returns {Array|value.playlist|{name, src, img, comments}|HOCAudioComponent.propTypes.playlist}
+     */
+    getPlayListByAlbumName(albumName) {
+        return this.state.albums.find((album) => album.name === albumName).playlist;
+    }
+
+    /**
+     * Updates player's state to set a custom song
+     * @param song
+     */
+    playSongInPlayer(song) {
+        let clickedSong = this.getActivePlaylist().indexOf(song);
+        // methods of react-audioplayer - public calls ???
+        this.audioComponent.setState({'currentPlaylistPos': clickedSong}, this.loadAndPlay.bind(this));
+    }
+
+    /**
+     * Loads song source and triggers play
+     */
+    loadAndPlay() {
+        // loading updated source as a callback to make sure state has been updated
+        this.audioComponent.loadSrc();
+        ReactDOM.findDOMNode(this.audioComponent).dispatchEvent(new Event('audio-play'));
     }
 }
 

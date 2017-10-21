@@ -8,7 +8,6 @@ import '../styles/hover-min.css';
 import '../styles/App.css';
 
 
-//@TODO fix bug with playing the first song first, and only then switch
 //@TODO fix scrolling bug on playlist
 //@TODO extend react-audioplayer to switch to .gif when play starts
 //@TODO setup compass
