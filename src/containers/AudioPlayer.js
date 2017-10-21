@@ -21,6 +21,7 @@ class AudioPlayer extends Component {
                 active: true,
                 source: '/audio/vertigo/',
                 album_cover: '/images/albums/vertigo/wideangle_vertigo_monoton_all.jpg',
+                album_gif: '/images/albums/vertigo/vertigo_cover_noise.jpg',
                 playlist: [
                     {
                         name: 'Vertigo',
@@ -28,14 +29,29 @@ class AudioPlayer extends Component {
                         src: '/audio/vertigo/vertigo.mp3'
                     },
                     {
-                        name: 'Dream Place',
+                        name: 'Laird',
                         img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
                         src: '/audio/vertigo/laird.mp3'
                     },
                     {
-                        name: 'Laird',
+                        name: 'Less Stress',
                         img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
-                        src: '/audio/vertigo/laird.mp3'
+                        src: '/audio/vertigo/less_stress.mp3'
+                    },
+                    {
+                        name: 'Roots',
+                        img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                        src: '/audio/vertigo/roots.mp3'
+                    },
+                    {
+                        name: 'Trip to Amsterdam',
+                        img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                        src: '/audio/vertigo/trip_to_amsterdam.mp3'
+                    },
+                    {
+                        name: 'Talk Our Lives',
+                        img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                        src: '/audio/vertigo/talk_our_lives.mp3'
                     },
                     {
                         name: 'Silensia',
