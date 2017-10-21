@@ -27,7 +27,7 @@ class AudioPlayer extends Component {
                 viewportHeight: window.innerHeight,
                 songWidth: 200
             },
-            active_song:  {
+            active_song: {
                 name: 'Vertigo',
                 img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
                 src: '/audio/vertigo/vertigo.mp3'
@@ -171,6 +171,7 @@ class AudioPlayer extends Component {
                         height={this.state.dimensions.viewportHeight}
                         fullPlayer={true}
                         autoPlay={false}
+                        color='#303030'
                         playlist={this.getActivePlaylist()}
                         togglePlayView={this.togglePlayView.bind(this)}
 
@@ -181,9 +182,15 @@ class AudioPlayer extends Component {
                     />
                 </div>
                 <div className="hw-playlist-container"
-                     onMouseEnter={(e) => {this.props.disableScroll(e)}}
-                     onMouseLeave={(e) => {this.props.enableScroll(e)}}>
-                    {this.state.albums.map((album) => {return this.generateAlbumPlaylist(album)})}
+                     onMouseEnter={(e) => {
+                         this.props.disableScroll(e)
+                     }}
+                     onMouseLeave={(e) => {
+                         this.props.enableScroll(e)
+                     }}>
+                    {this.state.albums.map((album) => {
+                        return this.generateAlbumPlaylist(album)
+                    })}
                 </div>
             </div>
         )
@@ -262,7 +269,8 @@ class AudioPlayer extends Component {
                 {
                     'active_album': songAlbum.name,
                     'active_song': song,
-                    playing: true},
+                    playing: true
+                },
                 this.playSongInPlayer.bind(this, song)); // callback to activate song in player
         }
     }

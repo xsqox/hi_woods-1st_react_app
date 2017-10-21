@@ -25,7 +25,7 @@ class Contact extends Component {
             <p>We are totally open for collaboration and gigs.
                 Let us know what you have in mind by dropping a note at <a href='mailto:hiwoodse@gmail.com'>hiwoodse@gmail.com</a>.</p>
             <p>You can also find us around the Web.
-                Feel free to leave your feedback or support with likes and shares (actually, will be much appreciated {'\u2764'}).</p>
+                Feel free to leave your feedback or show support with likes and shares (actually, will be much appreciated {'\u2764'}).</p>
             <ul className='hw-contacts'>
                 {items}
             </ul>
