@@ -5,7 +5,7 @@
 body {
   position: relative;
   font-size: $defaultFontSize;
-  font-family: $defaultFontFamily;
+  font-family: $defaultFontFamily !important;
   font-weight: 300;
   background: url('../../public/images/bg_cover.jpg') no-repeat fixed;
   background-size: 100% 100%;
@@ -46,6 +46,7 @@ p {
 }
 
 h3 {
+  font-size: 1.1em;
   padding: 10px 0 10px;
 }
 

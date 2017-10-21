@@ -12,11 +12,11 @@
   display: inline-block;
   padding: 15px;
   color: $darkFont;
-  font-weight: bold;
+  //font-weight: bold;
   text-transform: uppercase;
   text-shadow: 1px 1px 5px $darkShadow;
-  font-size: .8em;
-  font-family: $brandFont, cursive;
+  font-size: 1.1em;
+  font-family: $menu_font, cursive;
 
   li {
     display: inline-block;

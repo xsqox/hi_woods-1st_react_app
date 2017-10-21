@@ -1,9 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Nunito|Quicksand');
-
+@import url('https://fonts.googleapis.com/css?family=Dosis|Nunito|Quicksand');
 /* COLORS */
 $lightFont: #fff;
 $player_bg: #fff;
-$darkFont: #000;
+$darkFont: #202020;
 $darkerFont: #303030;
 $darkShadow: #ddd;
 $imgBorder: 3px solid #fff;
@@ -11,9 +10,10 @@ $galleryBorder: 1px solid #fff;
 
 /*fonts */
 $defaultFontSize: 20px;
-$defaultFontFamily: 'Open Sans', sans-serif;
+$defaultFontFamily: 'Dosis', sans-serif;
 $brandFont: 'manic-depressiveregular', serif;
-$player_font: 'Nunito', sans-serif;
+$player_font: 'Quicksand', sans-serif;
+$menu_font: 'Nunito', sans-serif;
 
 /* FONTS
 ==========================================*/

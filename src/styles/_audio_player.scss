@@ -98,7 +98,7 @@
       }
     }
   }
-  
+
   .glitch:after{
     content:attr(data-text);
     position:absolute;
@@ -134,8 +134,6 @@
   }
 }
 
-
-
 .play-handle-wrapper {
   display: table-cell;
   width: 25px;
@@ -145,6 +143,7 @@
 
 .handle-circle {
   display: inline-block;
+  vertical-align: middle;
   position: relative;
   border: 1px solid $darkerFont;
   border-radius: 50%;
