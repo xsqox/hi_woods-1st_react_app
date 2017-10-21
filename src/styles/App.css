@@ -96,6 +96,12 @@ pre {
 .hw-player-component .audioElements__btnStack___JMnsK {
   background: #fff; }
 
+.hw-player-component.playing .audioElements__commentsWrapperBackgroundMask___3LMXR, .hw-player-component.playing .audioElements__albumCoverContainer___E0mbQ {
+  display: none; }
+
+.hw-player-component.playing .audioElements__commentsWrapperBackground___3avoO {
+  filter: none; }
+
 .hw-playlist-container {
   position: absolute;
   right: 0;

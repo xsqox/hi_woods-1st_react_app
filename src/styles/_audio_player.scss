@@ -5,6 +5,15 @@
   .audioElements__btnStack___JMnsK {
     background: $player_bg;
   }
+
+  &.playing {
+    .audioElements__commentsWrapperBackgroundMask___3LMXR, .audioElements__albumCoverContainer___E0mbQ {
+      display: none;
+    }
+    .audioElements__commentsWrapperBackground___3avoO {
+      filter: none;
+    }
+  }
 }
 
 //** PLAYLIST **//

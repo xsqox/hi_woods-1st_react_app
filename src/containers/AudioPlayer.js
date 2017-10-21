@@ -3,6 +3,21 @@ import ReactDOM from 'react-dom';
 import Audio from 'react-audioplayer';
 import Playlist from '../components/Playlist.js';
 
+class HiWoodsAudio extends Audio {
+
+    constructor(props) {
+        super(props)
+    }
+
+    componentDidUpdate() {
+        if (this.state.playing) {
+            this.props.togglePlayView(true);
+        } else {
+            this.props.togglePlayView(false);
+        }
+    }
+}
+
 class AudioPlayer extends Component {
 
     constructor() {
@@ -24,8 +39,8 @@ class AudioPlayer extends Component {
                 name: 'Vertigo',
                 year: '2017',
                 source: '/audio/vertigo/',
-                album_cover: '/images/albums/vertigo/wideangle_vertigo_monoton_all.jpg',
-                album_gif: '/images/albums/vertigo/vertigo_cover_noise.jpg',
+                album_cover: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                album_gif: '/images/albums/vertigo/vertigo_cover_noise.gif',
                 playlist: [
                     {
                         name: 'Vertigo',
@@ -75,9 +90,9 @@ class AudioPlayer extends Component {
             }, {
                 name: 'Point C',
                 year: '2015',
-                active: false,
                 source: '/audio/point_c/',
                 album_cover: '/images/point_c_cover.jpg',
+                album_gif: '/images/point_c_cover.jpg',
                 playlist: [
                     {
                         name: 'Mayday Flower',
@@ -126,6 +141,8 @@ class AudioPlayer extends Component {
             },]
         }
         this.updateDimensions = this.updateDimensions.bind(this);
+        this.showGIF = this.showGIF.bind(this);
+        this.showCover = this.showCover.bind(this);
     }
 
     /**
@@ -148,13 +165,15 @@ class AudioPlayer extends Component {
     render() {
         return (
             <div className="full-view-container hw-player">
-                <div className="hw-player-component">
-                    <Audio
+                <div className={"hw-player-component " + ((this.state.playing) ? 'playing' : '')}>
+                    <HiWoodsAudio
                         width={this.state.dimensions.viewportWidth - this.state.dimensions.songWidth}
                         height={this.state.dimensions.viewportHeight}
                         fullPlayer={true}
                         autoPlay={false}
                         playlist={this.getActivePlaylist()}
+                        togglePlayView={this.togglePlayView.bind(this)}
+
 
                         // store a reference of the audio component
                         ref={audioComponent => {
@@ -169,8 +188,24 @@ class AudioPlayer extends Component {
         )
     }
 
+    togglePlayView(playing) {
+        if (playing) {
+            if (!this.state.playing) {
+                this.setState({'playing': true});
+                this.showGIF();
+            }
+        } else {
+            if (this.state.playing) {
+                this.setState({playing: false});
+                this.showCover();
+            }
+        }
+    }
+
     componentDidMount() {
         window.addEventListener('resize', this.updateDimensions);
+        ReactDOM.findDOMNode(this.audioComponent).addEventListener('audio-play', this.showGIF);
+        ReactDOM.findDOMNode(this.audioComponent).addEventListener('audio-pause', this.showCover);
     }
 
     componentWillMount() {
@@ -185,6 +220,22 @@ class AudioPlayer extends Component {
                 songWidth: 200
             }
         })
+    }
+
+    showGIF() {
+        let album_gif = this.state.albums.find((album) => album.name === this.state.active_album).album_gif;
+        let active_playlist = this.getActivePlaylist();
+        active_playlist.forEach(song => {
+            song.img = album_gif
+        });
+    }
+
+    showCover() {
+        let album_cover = this.state.albums.find((album) => album.name === this.state.active_album).album_cover;
+        let active_playlist = this.getActivePlaylist();
+        active_playlist.forEach(song => {
+            song.img = album_cover
+        });
     }
 
     /**
