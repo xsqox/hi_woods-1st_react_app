@@ -5,10 +5,6 @@ import Playlist from '../components/Playlist.js';
 
 class ExternalSwitchAudio extends Audio {
 
-    constructor(props) {
-        super(props)
-    }
-
     componentDidUpdate() {
         if (this.state.playing) {
             this.props.togglePlayView(true);
@@ -181,7 +177,9 @@ class AudioPlayer extends Component {
                         }}
                     />
                 </div>
-                <div className="hw-playlist-container" >
+                <div className="hw-playlist-container"
+                     onMouseEnter={(e) => {this.props.disableScroll(e)}}
+                     onMouseLeave={(e) => {this.props.enableScroll(e)}}>
                     {this.state.albums.map((album) => {return this.generateAlbumPlaylist(album)})}
                 </div>
             </div>
@@ -206,6 +204,9 @@ class AudioPlayer extends Component {
         window.addEventListener('resize', this.updateDimensions);
         ReactDOM.findDOMNode(this.audioComponent).addEventListener('audio-play', this.showGIF);
         ReactDOM.findDOMNode(this.audioComponent).addEventListener('audio-pause', this.showCover);
+        document.querySelector('.hw-playlist-container').addEventListener('scroll', this.onPlaylistScroll);
+        document.querySelector('.hw-playlist-container').addEventListener('mouseenter', this.preventBodyScroll);
+        document.querySelector('.hw-playlist-container').addEventListener('mouseleave', this.enableBodyScroll);
     }
 
     componentWillMount() {

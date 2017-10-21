@@ -7,8 +7,8 @@ import Contact from '../components/Contact.js';
 import '../styles/hover-min.css';
 import '../styles/App.css';
 
-
-//@TODO fix scrolling bug on playlist
+//@TODO extend components instead of using public methods
+//@TODO make responsive
 //@TODO setup compass
 //@TODO add sharing
 //@TODO embed Youtube video
@@ -36,14 +36,28 @@ class App extends Component {
                     <PageMenu menuClickRelay={this.handleMenuClick.bind(this)}/>
                 </Header>
                 <div className="hw-main">
-                    <SectionsContainer {...options} ref={sectionsContainer => {this.sectionsContainer = sectionsContainer} }>
+                    <SectionsContainer {...options} ref={sectionsContainer => {
+                        this.sectionsContainer = sectionsContainer
+                    } }>
                         <Section><Bio /></Section>
-                        <Section><AudioPlayer /></Section>
+                        <Section>
+                            <AudioPlayer
+                                disableScroll={() => {this.disableFullPageScroll()}}
+                                enableScroll={() => {this.enableFullPageScroll()}}/>
+                        </Section>
                         <Section><Contact /></Section>
                     </SectionsContainer>
                 </div>
             </div>
         )
+    }
+
+    disableFullPageScroll() {
+       this.sectionsContainer._removeMouseWheelEventHandlers();
+    }
+
+    enableFullPageScroll() {
+        this.sectionsContainer._addMouseWheelEventHandlers();
     }
 
     componentDidMount() {
@@ -54,7 +68,7 @@ class App extends Component {
     /**
      * Scrolls to the correct view based on url hash
      */
-    scrollToAnchor () {
+    scrollToAnchor() {
         // Decode entities in the URL
         window.location.hash = window.decodeURIComponent(window.location.hash);
         const hashParts = window.location.hash.split('#');
