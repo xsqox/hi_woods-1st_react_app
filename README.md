@@ -1,7 +1,7 @@
 # First React app for home music band website
 
 Current implementation
-- SPA routing with react-router-dom
+- SPA with full-page scrolling
 - Audio playback with react-audioplayer
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).

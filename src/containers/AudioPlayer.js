@@ -5,6 +5,9 @@ import Playlist from '../components/Playlist.js';
 
 class ExternalSwitchAudio extends Audio {
 
+    /**
+     * Hook to update player visuals when
+     */
     componentDidUpdate() {
         if (this.state.playing) {
             this.props.togglePlayView(true);
@@ -186,6 +189,30 @@ class AudioPlayer extends Component {
         )
     }
 
+    componentWillMount() {
+        this.updateDimensions();
+    }
+
+    componentDidMount() {
+        window.addEventListener('resize', this.updateDimensions);
+        ReactDOM.findDOMNode(this.audioComponent).addEventListener('audio-play', this.showGIF);
+        ReactDOM.findDOMNode(this.audioComponent).addEventListener('audio-pause', this.showCover);
+    }
+
+    updateDimensions() {
+        this.setState({
+            dimensions: {
+                viewportWidth: window.innerWidth,
+                viewportHeight: window.innerHeight,
+                songWidth: 200
+            }
+        })
+    }
+
+    /**
+     * Update player visuals on onPlay event
+     * @param playing
+     */
     togglePlayView(playing) {
         if (playing) {
             if (!this.state.playing) {
@@ -200,29 +227,9 @@ class AudioPlayer extends Component {
         }
     }
 
-    componentDidMount() {
-        window.addEventListener('resize', this.updateDimensions);
-        ReactDOM.findDOMNode(this.audioComponent).addEventListener('audio-play', this.showGIF);
-        ReactDOM.findDOMNode(this.audioComponent).addEventListener('audio-pause', this.showCover);
-        document.querySelector('.hw-playlist-container').addEventListener('scroll', this.onPlaylistScroll);
-        document.querySelector('.hw-playlist-container').addEventListener('mouseenter', this.preventBodyScroll);
-        document.querySelector('.hw-playlist-container').addEventListener('mouseleave', this.enableBodyScroll);
-    }
-
-    componentWillMount() {
-        this.updateDimensions();
-    }
-
-    updateDimensions() {
-        this.setState({
-            dimensions: {
-                viewportWidth: window.innerWidth,
-                viewportHeight: window.innerHeight,
-                songWidth: 200
-            }
-        })
-    }
-
+    /**
+     * Replaces default album cover with animated gif when player is set to play
+     */
     showGIF() {
         let album_gif = this.state.albums.find((album) => album.name === this.state.active_album).album_gif;
         let active_playlist = this.getActivePlaylist();
@@ -231,6 +238,9 @@ class AudioPlayer extends Component {
         });
     }
 
+    /**
+     * Puts back default album cover when player is put on pause or stops playing
+     */
     showCover() {
         let album_cover = this.state.albums.find((album) => album.name === this.state.active_album).album_cover;
         let active_playlist = this.getActivePlaylist();

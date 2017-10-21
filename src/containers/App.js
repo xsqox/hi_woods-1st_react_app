@@ -52,10 +52,16 @@ class App extends Component {
         )
     }
 
+    /**
+     * Hacky fix to prevent full page scroll on div with their own scroll ??? how to do it right ???
+     */
     disableFullPageScroll() {
        this.sectionsContainer._removeMouseWheelEventHandlers();
     }
 
+    /**
+     * Hacky fix to enable back full page scroll ??? how to do it right ???
+     */
     enableFullPageScroll() {
         this.sectionsContainer._addMouseWheelEventHandlers();
     }
