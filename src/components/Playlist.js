@@ -7,7 +7,6 @@ class Playlist extends Component {
     constructor(props) {
         super();
         this.state = {
-            active: props.active,
             playlistShown: props.active
         }
     }
@@ -17,15 +16,13 @@ class Playlist extends Component {
     }
 
     handleAlbumClick(albumName) {
+        this.setState({playlistShown: true})
         this.props.albumRelay(albumName);
     }
 
     renderSong(song, idx) {
-        let classNme = song.name.toLowerCase() + ' ';
-        classNme += ((idx === this.state.active) ? 'active' : '');
         //@TODO create a widget item as have the same functionality - active, click
-        return <Song className={classNme}
-                     text={song.name}
+        return <Song text={song.name}
                      key={idx}
                      img={song.img}
                      onClick={() => this.handleClick(song)}
@@ -42,7 +39,11 @@ class Playlist extends Component {
         return (
             <div className="hw-album-playlist">
                 <div className="hw-album-toggler">
-                    <span onClick={() => this.handleAlbumClick(this.props.albumName)} className="hw-album-name">{this.props.albumName + ' (' + this.props.year + ')'}</span>
+                    <span onClick={() => this.handleAlbumClick(this.props.albumName)}
+                          className={"hw-album-name " + ((this.props.playing && this.props.active) ? 'glitch' : '')}
+                          data-text={this.props.albumName + ' (' + this.props.year + ')'}>
+                        {this.props.albumName + ' (' + this.props.year + ')'}
+                    </span>
                     <span className="play-handle-wrapper" onClick={() => this.togglePlaylist(this.props.albumName)}>
                     <span className="play-album-handle"></span>
                 </span>

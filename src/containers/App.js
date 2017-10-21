@@ -9,7 +9,6 @@ import '../styles/App.css';
 
 
 //@TODO fix scrolling bug on playlist
-//@TODO extend react-audioplayer to switch to .gif when play starts
 //@TODO setup compass
 //@TODO add sharing
 //@TODO embed Youtube video

@@ -22,6 +22,7 @@
   right: 0;
   top: 0;
   overflow-y: scroll;
+  overflow-x: hidden;
   height: 100%;
   border-left: 1px solid $darkFont;
   z-index: 111;
@@ -32,6 +33,7 @@
 
 .hw-playlist {
   margin-left: 10px;
+  color: $darkerFont;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -49,7 +51,7 @@
   position: relative;
   width: 180px;
   vertical-align: middle;
-  font-family: $brandFont, cursive;
+  font-family: $player_font, cursive;
   text-align: left;
   margin: 5px;
   padding: 0px 5px;
@@ -66,13 +68,73 @@
 }
 
 .hw-album-toggler {
-  width: 180px;
-  font-family: $brandFont, cursive;
+  width: 98%;
+  font-family: $player_font, cursive;
   text-align: left;
   margin: 5px;
   padding: 5px;
   font-size: 1.1em;
+
+
+  .hw-album-name {
+    display: inline-block;
+    width: 100%;
+  }
+
+  .glitch{
+    color: $darkerFont;
+    font-size: 1.1em;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    margin:0 auto;
+  }
+
+  @keyframes noise-anim{
+    $steps:20;
+    @for $i from 0 through $steps{
+      #{percentage($i*(1/$steps))}{
+        clip:rect(random(100)+px,9999px,random(100)+px,0);
+      }
+    }
+  }
+  
+  .glitch:after{
+    content:attr(data-text);
+    position:absolute;
+    left: 1px;
+    text-shadow: -1px 0 red;
+    top: 0;
+    color: $darkerFont;
+    background: $player_bg;
+    overflow: hidden;
+    clip: rect(0,900px,0,0);
+    animation: noise-anim 2s infinite linear alternate-reverse;
+  }
+
+  @keyframes noise-anim-2{
+    $steps:20;
+    @for $i from 0 through $steps{
+      #{percentage($i*(1/$steps))}{
+        clip:rect(random(100)+px,9999px,random(100)+px,0);
+      }
+    }
+  }
+  .glitch:before{
+    content:attr(data-text);
+    position:absolute;
+    left: -1px;
+    text-shadow:1px 0 blue;
+    top:0;
+    color:$darkerFont;
+    background:$player_bg;
+    overflow:hidden;
+    clip:rect(0,900px,0,0);
+    animation:noise-anim-2 3s infinite linear alternate-reverse;
+  }
 }
+
+
 
 .play-handle-wrapper {
   display: table-cell;
@@ -81,12 +143,38 @@
   vertical-align: middle;
 }
 
+.handle-circle {
+  display: inline-block;
+  position: relative;
+  border: 1px solid $darkerFont;
+  border-radius: 50%;
+  width: 17px;
+  height: 17px;
+
+  &:before {
+    content: '';
+    vertical-align: middle;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px 0 5px 10px;
+    border-color: transparent transparent transparent $darkerFont;
+    transition: all 1s ease-out;
+    opacity: 0.7;
+    cursor: pointer;
+    position: absolute;
+    top: calc(50% - 5px);
+    left: calc(50% - 3.5px);
+    margin: auto;
+  }
+}
+
 .play-handle, .play-album-handle {
   display: inline-block;
   vertical-align: middle;
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-  border-left: 13px solid $darkFont;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 10px solid $darkFont;
   transition: all 1s ease-out;
   opacity: 0.7;
   cursor: pointer;

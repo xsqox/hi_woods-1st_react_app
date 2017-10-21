@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Audio from 'react-audioplayer';
 import Playlist from '../components/Playlist.js';
 
-class HiWoodsAudio extends Audio {
+class ExternalSwitchAudio extends Audio {
 
     constructor(props) {
         super(props)
@@ -152,6 +152,7 @@ class AudioPlayer extends Component {
      */
     generateAlbumPlaylist(album) {
         return <Playlist
+            playing={this.state.playing}
             active={album.name === this.state.active_album ? true : false}
             key={album.name}
             playlist={album.playlist}
@@ -166,14 +167,13 @@ class AudioPlayer extends Component {
         return (
             <div className="full-view-container hw-player">
                 <div className={"hw-player-component " + ((this.state.playing) ? 'playing' : '')}>
-                    <HiWoodsAudio
+                    <ExternalSwitchAudio
                         width={this.state.dimensions.viewportWidth - this.state.dimensions.songWidth}
                         height={this.state.dimensions.viewportHeight}
                         fullPlayer={true}
                         autoPlay={false}
                         playlist={this.getActivePlaylist()}
                         togglePlayView={this.togglePlayView.bind(this)}
-
 
                         // store a reference of the audio component
                         ref={audioComponent => {
