@@ -15,7 +15,6 @@ import '../styles/App.css';
 //@TODO embed Youtube video
 //@TODO add gallery / Instagram feed
 
-
 class App extends Component {
 
     render() {
@@ -49,27 +48,30 @@ class App extends Component {
     }
 
     componentDidMount() {
-        // Decode entities in the URL
-        window.location.hash = window.decodeURIComponent(window.location.hash);
         this.scrollToAnchor();
         window.onhashchange = this.scrollToAnchor.bind(this);
     }
 
-    handleMenuClick(hash) {
-        document.querySelector(`${hash}`).scrollIntoView();
-        this.scrollToAnchor();
-        window.onhashchange = this.scrollToAnchor.bind(this);
-    }
-
+    /**
+     * Scrolls to the correct view based on url hash
+     */
     scrollToAnchor () {
+        // Decode entities in the URL
         window.location.hash = window.decodeURIComponent(window.location.hash);
         const hashParts = window.location.hash.split('#');
         if (hashParts.length > 2) {
             const hash = hashParts.slice(-1)[0];
             document.querySelector(`${hash}`).scrollIntoView();
-        } else {
-            document.querySelector(`${'about'}`).scrollIntoView();
         }
+    }
+
+    /**
+     * Updates hash by clicked menu linked anchor and trigger event
+     * @param anchor
+     */
+    handleMenuClick(anchor) {
+        window.location.hash = anchor;
+        window.dispatchEvent(new Event("hashchange"));
     }
 }
 
