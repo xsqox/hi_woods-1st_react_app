@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-
 import '../styles/hover-min.css';
 
 class MenuItem extends Component {
@@ -16,16 +15,6 @@ class MenuItem extends Component {
 
 class PageMenu extends Component {
 
-    constructor() {
-        super();
-        this.state = {
-            menuItems: [
-                {id: 1, text: 'About', url: '#about'},
-                {id: 2, text: 'Listen', url: '#listen'},
-                {id: 3, text: 'Contact', url: '#contact'}]
-        }
-    }
-
     handleClick(hash) {
         this.props.menuClickRelay(hash);
     }
@@ -38,7 +27,7 @@ class PageMenu extends Component {
     render() {
         return (
             <ul className="hw-menu-list">
-                {this.state.menuItems.map((item) => {return this.generateItem(item)})}
+                {this.props.menuItems.map((item) => {return this.generateItem(item)})}
             </ul>
         )
     }

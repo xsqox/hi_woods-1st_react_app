@@ -18,16 +18,19 @@ class App extends Component {
 
     constructor() {
         super();
-        this.pages =  ['about', 'listen', 'contact'];
-        this.mediaQueries  = {
-            phone: "(max-device-width: 639px)",
-            small_tablet: "(min-device-width: 640px) and (max-device-width: 767px)",
-            tablet: "(min-device-width: 768px) and (max-device-width: 1023px)",
-            desktop: "(min-width: 1024px)"
-        };
+        this.pages = ['about', 'listen', 'contact'];
         this.state = {
-            activePage: `#${this.pages[this.getActivePageIndex()]}`
-        }
+            menuItems: [
+                {id: 1, text: 'About', url: '#about'},
+                {id: 2, text: 'Listen', url: '#listen'},
+                {id: 3, text: 'Contact', url: '#contact'}]
+        };
+    }
+
+    componentWillMount() {
+        this.setState({
+            activePage: this.getActivePageUrl()
+        })
     }
 
     render() {
@@ -48,19 +51,23 @@ class App extends Component {
         return (
             <div className="hw-app">
                 <Header>
-                    <PageMenu activePage={this.state.activePage} menuClickRelay={this.handleMenuClick.bind(this)}/>
+                    <PageMenu menuItems={this.state.menuItems} activePage={this.state.activePage}
+                              menuClickRelay={this.handleMenuClick.bind(this)}/>
                 </Header>
                 <div className="hw-main">
                     <SectionsContainer {...options} ref={sectionsContainer => {
                         this.sectionsContainer = sectionsContainer
                     } }>
-                        <Section><Bio mediaQueries={this.mediaQueries} /></Section>
+                        <Section><Bio /></Section>
                         <Section>
-                            <AudioPlayer mediaQueries={this.mediaQueries}
-                                disableScroll={() => {this.disableFullPageScroll()}}
-                                enableScroll={() => {this.enableFullPageScroll()}}/>
+                            <AudioPlayer disableScroll={() => {
+                                             this.disableFullPageScroll()
+                                         }}
+                                         enableScroll={() => {
+                                             this.enableFullPageScroll()
+                                         }}/>
                         </Section>
-                        <Section><Contact mediaQueries={this.mediaQueries} /></Section>
+                        <Section><Contact mediaQueries={this.mediaQueries}/></Section>
                     </SectionsContainer>
                 </div>
             </div>
@@ -78,14 +85,19 @@ class App extends Component {
     }
 
     getActivePageIndex() {
-        return (window.location.hash) ? this.pages.indexOf(window.location.hash.split('#')[1]) : this.pages.indexOf('about');
+        let hash = window.location.hash;
+        return (hash) ? this.state.menuItems.indexOf(this.state.menuItems.find(item => item.url === hash)) : this.state.menuItems.indexOf(this.state.menuItems.find(item => item.url === '#about'));
+    }
+
+    getActivePageUrl() {
+        return this.state.menuItems[this.getActivePageIndex()].url;
     }
 
     /**
      * Hacky fix to prevent full page scroll on div with their own scroll ??? how to do it right ???
      */
     disableFullPageScroll() {
-       this.sectionsContainer._removeMouseWheelEventHandlers();
+        this.sectionsContainer._removeMouseWheelEventHandlers();
     }
 
     /**
