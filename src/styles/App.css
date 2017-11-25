@@ -27,8 +27,7 @@ body {
   background: url("../../public/images/bg_cover.jpg") no-repeat fixed;
   background-size: 100% 100%;
   height: 100%;
-  overflow: hidden;
-  text-wrap: none; }
+  overflow: hidden; }
   body * {
     margin-top: 0;
     margin-bottom: 0;
@@ -42,7 +41,7 @@ header {
 
 .view-container {
   position: relative;
-  margin: 100px 50px; }
+  margin: 100px 50px 0; }
 
 .content-wrapper {
   width: 70%;
@@ -82,15 +81,23 @@ pre {
 .hidden {
   display: none !important; }
 
+/* MEDIA QUERIES
+==========================================*/
 @media screen and (max-width: 639px) {
+  body {
+    background: url("../../public/images/bg_cover.jpg") no-repeat 0 0 fixed;
+    background-size: 100% 130%; }
   .view-container {
-    margin: 50px 15px; }
+    margin: 50px 15px 0; }
   .content-wrapper {
     width: 100%; } }
 
 @media screen and (min-width: 640px) and (max-width: 767px) {
+  body {
+    background: url("../../public/images/bg_cover.jpg") no-repeat 0 0 fixed;
+    background-size: 100% 140%; }
   .view-container {
-    margin: 50px 20px; }
+    margin: 40px 20px 0; }
   .content-wrapper {
     width: 100%; } }
 
@@ -248,47 +255,47 @@ pre {
 
 @keyframes noise-anim {
   0% {
-    clip: rect(40px, 9999px, 67px, 0); }
+    clip: rect(16px, 9999px, 99px, 0); }
   5% {
-    clip: rect(60px, 9999px, 59px, 0); }
+    clip: rect(65px, 9999px, 20px, 0); }
   10% {
-    clip: rect(21px, 9999px, 90px, 0); }
+    clip: rect(86px, 9999px, 60px, 0); }
   15% {
-    clip: rect(86px, 9999px, 13px, 0); }
+    clip: rect(60px, 9999px, 75px, 0); }
   20% {
-    clip: rect(62px, 9999px, 58px, 0); }
+    clip: rect(78px, 9999px, 86px, 0); }
   25% {
-    clip: rect(55px, 9999px, 5px, 0); }
+    clip: rect(70px, 9999px, 96px, 0); }
   30% {
-    clip: rect(58px, 9999px, 62px, 0); }
+    clip: rect(78px, 9999px, 28px, 0); }
   35% {
-    clip: rect(66px, 9999px, 2px, 0); }
+    clip: rect(74px, 9999px, 76px, 0); }
   40% {
-    clip: rect(51px, 9999px, 92px, 0); }
+    clip: rect(64px, 9999px, 25px, 0); }
   45% {
-    clip: rect(98px, 9999px, 93px, 0); }
+    clip: rect(55px, 9999px, 3px, 0); }
   50% {
-    clip: rect(45px, 9999px, 52px, 0); }
+    clip: rect(3px, 9999px, 67px, 0); }
   55% {
-    clip: rect(81px, 9999px, 19px, 0); }
+    clip: rect(70px, 9999px, 46px, 0); }
   60% {
-    clip: rect(27px, 9999px, 15px, 0); }
+    clip: rect(98px, 9999px, 21px, 0); }
   65% {
-    clip: rect(59px, 9999px, 26px, 0); }
+    clip: rect(56px, 9999px, 18px, 0); }
   70% {
-    clip: rect(89px, 9999px, 41px, 0); }
+    clip: rect(9px, 9999px, 51px, 0); }
   75% {
-    clip: rect(69px, 9999px, 2px, 0); }
+    clip: rect(18px, 9999px, 86px, 0); }
   80% {
-    clip: rect(46px, 9999px, 69px, 0); }
+    clip: rect(36px, 9999px, 75px, 0); }
   85% {
-    clip: rect(10px, 9999px, 74px, 0); }
+    clip: rect(23px, 9999px, 98px, 0); }
   90% {
-    clip: rect(76px, 9999px, 71px, 0); }
+    clip: rect(14px, 9999px, 13px, 0); }
   95% {
-    clip: rect(12px, 9999px, 22px, 0); }
+    clip: rect(99px, 9999px, 22px, 0); }
   100% {
-    clip: rect(58px, 9999px, 51px, 0); } }
+    clip: rect(61px, 9999px, 31px, 0); } }
   .hw-album-toggler .glitch:after {
     content: attr(data-text);
     position: absolute;
@@ -303,47 +310,47 @@ pre {
 
 @keyframes noise-anim-2 {
   0% {
-    clip: rect(31px, 9999px, 2px, 0); }
+    clip: rect(93px, 9999px, 78px, 0); }
   5% {
-    clip: rect(74px, 9999px, 25px, 0); }
+    clip: rect(56px, 9999px, 29px, 0); }
   10% {
-    clip: rect(40px, 9999px, 16px, 0); }
+    clip: rect(17px, 9999px, 21px, 0); }
   15% {
-    clip: rect(16px, 9999px, 44px, 0); }
+    clip: rect(88px, 9999px, 72px, 0); }
   20% {
-    clip: rect(93px, 9999px, 12px, 0); }
+    clip: rect(36px, 9999px, 25px, 0); }
   25% {
-    clip: rect(98px, 9999px, 15px, 0); }
+    clip: rect(14px, 9999px, 33px, 0); }
   30% {
-    clip: rect(53px, 9999px, 49px, 0); }
+    clip: rect(89px, 9999px, 55px, 0); }
   35% {
-    clip: rect(32px, 9999px, 76px, 0); }
+    clip: rect(34px, 9999px, 26px, 0); }
   40% {
-    clip: rect(34px, 9999px, 67px, 0); }
+    clip: rect(21px, 9999px, 70px, 0); }
   45% {
-    clip: rect(82px, 9999px, 96px, 0); }
+    clip: rect(48px, 9999px, 9px, 0); }
   50% {
-    clip: rect(100px, 9999px, 19px, 0); }
+    clip: rect(50px, 9999px, 98px, 0); }
   55% {
-    clip: rect(86px, 9999px, 69px, 0); }
+    clip: rect(14px, 9999px, 45px, 0); }
   60% {
-    clip: rect(37px, 9999px, 26px, 0); }
+    clip: rect(54px, 9999px, 75px, 0); }
   65% {
-    clip: rect(99px, 9999px, 85px, 0); }
+    clip: rect(46px, 9999px, 43px, 0); }
   70% {
-    clip: rect(4px, 9999px, 43px, 0); }
+    clip: rect(98px, 9999px, 33px, 0); }
   75% {
-    clip: rect(98px, 9999px, 12px, 0); }
+    clip: rect(68px, 9999px, 82px, 0); }
   80% {
-    clip: rect(46px, 9999px, 38px, 0); }
+    clip: rect(28px, 9999px, 46px, 0); }
   85% {
-    clip: rect(20px, 9999px, 27px, 0); }
+    clip: rect(68px, 9999px, 98px, 0); }
   90% {
-    clip: rect(47px, 9999px, 32px, 0); }
+    clip: rect(22px, 9999px, 22px, 0); }
   95% {
-    clip: rect(79px, 9999px, 78px, 0); }
+    clip: rect(30px, 9999px, 17px, 0); }
   100% {
-    clip: rect(82px, 9999px, 65px, 0); } }
+    clip: rect(28px, 9999px, 18px, 0); } }
   .hw-album-toggler .glitch:before {
     content: attr(data-text);
     position: absolute;
@@ -424,6 +431,8 @@ pre {
   border-width: 10px 5px 0 5px;
   border-color: #f5f5f5 transparent transparent transparent; }
 
+/* MEDIA QUERIES
+==========================================*/
 @media screen and (max-width: 639px) {
   .hw-player {
     flex-direction: column; }
@@ -468,23 +477,15 @@ pre {
   margin: 10px 35px 10px 0;
   display: inline-block; }
 
+/* MEDIA QUERIES
+==========================================*/
 @media screen and (max-width: 639px) {
   .hw-contacts {
-    margin-bottom: 30px; } }
+    margin-bottom: 10px; } }
 
 @media screen and (min-width: 640px) and (max-width: 767px) {
   .hw-contacts {
-    margin: 15px 0 5px 0;
-    color: #f5f5f5; }
-  .contact-link {
-    margin: 10px 30px 10px 0; }
-    .contact-link a {
-      color: #b0b0b0; }
-      .contact-link a:visited {
-        color: #b0b0b0; }
-      .contact-link a:focus {
-        color: #b0b0b0;
-        text-shadow: 1px 1px 5px #ddd; } }
+    margin: 0; } }
 
 .brand {
   font-family: "manic-depressiveregular", serif;
@@ -494,15 +495,7 @@ pre {
   font-size: 1.1em;
   cursor: pointer;
   text-decoration: none; }
-  .brand-action.inverse {
-    color: #b0b0b0; }
-    .brand-action.inverse:visited {
-      color: #b0b0b0; }
-    .brand-action.inverse:focus {
-      color: #b0b0b0;
-      text-shadow: 1px 1px 5px #ddd; }
 
 .hw-good-wish {
-  text-align: center; }
-  .hw-good-wish.inverse {
-    color: #b0b0b0; }
+  text-align: center;
+  padding: 0; }

@@ -11,7 +11,6 @@ body {
   background-size: 100% 100%;
   height: 100%;
   overflow: hidden;
-  text-wrap: none;
 
   * {
     margin-top: 0;
@@ -30,7 +29,7 @@ header {
 
 .view-container {
   position: relative;
-  margin: 100px 50px;
+  margin: 100px 50px 0;
 }
 
 .content-wrapper {
@@ -87,10 +86,18 @@ pre {
   display: none !important;
 }
 
+
+/* MEDIA QUERIES
+==========================================*/
 @media #{$phone} {
 
+  body {
+    background: url('../../public/images/bg_cover.jpg') no-repeat 0 0 fixed;
+    background-size: 100% 130%;
+  }
+
   .view-container {
-    margin: 50px 15px;
+    margin: 50px 15px 0;
   }
 
   .content-wrapper {
@@ -100,14 +107,20 @@ pre {
 
 @media #{$small_tablet} {
 
+  body {
+    background: url('../../public/images/bg_cover.jpg') no-repeat 0 0 fixed;
+    background-size: 100% 140%;
+  }
+
   .view-container {
-    margin: 50px 20px;
+    margin: 40px 20px 0;
   }
 
   .content-wrapper {
     width: 100%;
   }
 }
+
 
 @media #{$desktop} {
 

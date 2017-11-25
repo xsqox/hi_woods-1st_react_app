@@ -16,34 +16,18 @@
   display: inline-block;
 }
 
+/* MEDIA QUERIES
+==========================================*/
 @media #{$phone} {
 
   .hw-contacts {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
 }
 
 @media #{$small_tablet} {
 
   .hw-contacts {
-    margin: 15px 0 5px 0;
-    color: $lightFont;
-  }
-
-  .contact-link {
-    margin: 10px 30px 10px 0;
-
-      a {
-        color: $greyFont;
-
-        &:visited {
-          color: $greyFont;
-        }
-
-        &:focus {
-          color: $greyFont;
-          text-shadow: 1px 1px 5px #ddd;
-        }
-      }
+    margin: 0;
   }
 }

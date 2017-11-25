@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import MediaQuery from 'react-responsive';
 
 class Contact extends Component {
 
@@ -33,22 +32,8 @@ class Contact extends Component {
                 <ul className='hw-contacts'>
                     {items}
                 </ul>
-                <MediaQuery query={this.props.mediaQueries.phone}>
-                    <p className="hw-good-wish inverse">May the <span className='brand'>High</span> and the <span
-                        className='brand'>Woods</span> be with you!</p>
-                </MediaQuery>
-                <MediaQuery query={this.props.mediaQueries.small_tablet}>
-                    <p className="hw-good-wish inverse">May the <span className='brand'>High</span> and the <span
-                        className='brand'>Woods</span> be with you!</p>
-                </MediaQuery>
-                <MediaQuery query={this.props.mediaQueries.tablet}>
-                    <p className="hw-good-wish">May the <span className='brand'>High</span> and the <span
-                        className='brand'>Woods</span> be with you!</p>
-                </MediaQuery>
-                <MediaQuery query={this.props.mediaQueries.desktop}>
-                    <p className="hw-good-wish">May the <span className='brand'>High</span> and the <span
-                        className='brand'>Woods</span> be with you!</p>
-                </MediaQuery>
+                <p className="hw-good-wish">May the <span className='brand'>High</span> and the <span
+                    className='brand'>Woods</span> be with you!</p>
             </div>
         </div>
     }
