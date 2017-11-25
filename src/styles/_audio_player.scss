@@ -1,6 +1,11 @@
 // ALBUM APP //
 
 // OVERWRITES FOR REACT-AUDIOPLAYER
+.hw-player {
+  display: flex;
+  background: $player_bg;
+}
+
 .hw-player-component {
   .audioElements__btnStack___JMnsK {
     background: $player_bg;
@@ -23,17 +28,12 @@
 
 //** PLAYLIST **//
 .hw-playlist-container {
-  position: absolute;
-  right: 0;
-  top: 0;
-  overflow-y: scroll;
+  flex: 0 0 210px;
+  overflow-y: auto;
   overflow-x: hidden;
-  height: 100%;
   border-left: 1px solid $player_bg;
-  z-index: 111;
   background: $player_bg;
   opacity: 1;
-  width: 220px;
 }
 
 .hw-playlist {
@@ -43,20 +43,19 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  aligh-items: stretch;
 }
 
-.hw-song-content, .hw-album-toggler {
-  height: 100%;
-  display: table;
+.hw-song-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
 }
 
 .hw-song {
-  flex-basis: 100%;
+  flex-basis: auto;
   position: relative;
-  width: 180px;
   vertical-align: middle;
-  font-family: $lightFont, cursive;
+  font-family: $player_font, cursive;
   text-align: left;
   margin: 5px;
   padding: 5px;
@@ -73,9 +72,11 @@
 }
 
 .hw-album-toggler {
-  width: 98%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   color: $lightFont;
-  font-family: $lightFont, cursive;
+  font-family: $player_font, cursive;
   text-align: left;
   margin: 5px;
   padding: 5px;
@@ -83,7 +84,6 @@
 
   .hw-album-name {
     display: inline-block;
-    width: 100%;
   }
 
   .glitch {
@@ -140,7 +140,7 @@
 }
 
 .play-handle-wrapper {
-  display: table-cell;
+  display: inline-block;
   width: 25px;
   padding-right: 5px;
   vertical-align: middle;
@@ -152,7 +152,6 @@
   vertical-align: middle;
   position: relative;
   margin: 0 auto;
-  vertical-align: middle;
   width: 0;
   height: 0;
   border-style: solid;
@@ -175,7 +174,52 @@
 }
 
 .play-album-handle {
+  display: inline-block;
+  margin-left: 10px;
   border-style: solid;
   border-width: 10px 5px 0 5px;
   border-color: $lightFont transparent transparent transparent;
+}
+
+@media #{$phone} {
+
+  .hw-player {
+    flex-direction: column;
+  }
+
+  .hw-playlist-container {
+    flex: 1 0 140px;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .hw-album-toggler {
+    justify-content: flex-start;
+    margin: 0 5px;
+    flex: 0 0 170px;
+  }
+
+  .hw-album-playlist {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .hw-playlist {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+
+  .hw-song {
+    flex: 1 0 60px;
+    margin: 0 5px;
+  }
+
+  .play-album-handle {
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 10px solid $lightFont;
+  }
 }

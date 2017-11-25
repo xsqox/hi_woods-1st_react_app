@@ -6,6 +6,9 @@
 # testing
 /coverage
 
+# styles
+/src/styles/*.css
+
 # production
 /build
 

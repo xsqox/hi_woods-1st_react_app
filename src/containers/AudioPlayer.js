@@ -22,11 +22,24 @@ class AudioPlayer extends Component {
     constructor() {
         super();
         this.state = {
-            dimensions: {
-                viewportWidth: window.innerWidth,
-                viewportHeight: window.innerHeight,
-                songWidth: 200
+            viewportWidth: window.innerWidth,
+            viewportHeight: window.innerHeight,
+            songWidth: 210,
+            songHeight: 140,
+            mediaQueries: {
+                phone: {
+                    min: 0,
+                    max: 640
+                },
+                tablet: {
+                    min: 641,
+                    max: 1023
+                },
+                desktop: {
+                    min: 1024
+                }
             },
+
             active_song: {
                 name: 'Vertigo',
                 img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
@@ -147,7 +160,7 @@ class AudioPlayer extends Component {
                         src: '/audio/point_c/09_XC.mp3'
                     }]
             },]
-        }
+        };
         this.updateDimensions = this.updateDimensions.bind(this);
         this.showGIF = this.showGIF.bind(this);
         this.showCover = this.showCover.bind(this);
@@ -161,7 +174,7 @@ class AudioPlayer extends Component {
     generateAlbumPlaylist(album) {
         return <Playlist
             playing={this.state.playing}
-            active={album.name === this.state.active_album ? true : false}
+            active={album.name === this.state.active_album}
             key={album.name}
             playlist={album.playlist}
             albumName={album.name}
@@ -171,13 +184,27 @@ class AudioPlayer extends Component {
         />
     }
 
+    calculatePlayerDimensions() {
+        let playerWidth = this.state.viewportWidth - this.state.songWidth;
+        let playerHeight = this.state.viewportHeight;
+        let mediaQueries = this.state.mediaQueries;
+        Object.keys(mediaQueries).forEach((key) => {
+            if (key === 'phone' && this.state.viewportWidth >= mediaQueries[key].min && this.state.viewportWidth <= mediaQueries[key].max) {
+                playerWidth = this.state.viewportWidth;
+                playerHeight = this.state.viewportHeight - this.state.songHeight;
+            }
+        });
+        return {playerWidth, playerHeight};
+    }
+
     render() {
+        let {playerWidth, playerHeight} = this.calculatePlayerDimensions();
         return (
             <div className="full-view-container hw-player">
                 <div className={"hw-player-component " + ((this.state.playing) ? 'playing' : '')}>
                     <ExternalSwitchAudio
-                        width={this.state.dimensions.viewportWidth - this.state.dimensions.songWidth}
-                        height={this.state.dimensions.viewportHeight}
+                        width={playerWidth}
+                        height={playerHeight}
                         fullPlayer={true}
                         autoPlay={false}
                         color='#F5F5F5'
@@ -217,12 +244,9 @@ class AudioPlayer extends Component {
 
     updateDimensions() {
         this.setState({
-            dimensions: {
                 viewportWidth: window.innerWidth,
-                viewportHeight: window.innerHeight,
-                songWidth: 200
-            }
-        })
+                viewportHeight: window.innerHeight
+        });
     }
 
     /**

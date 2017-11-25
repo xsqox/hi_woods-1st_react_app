@@ -4,7 +4,7 @@ class Song extends Component {
 
     render() {
         return <li onClick={() => this.props.onClick(this.props.text)}
-                   className={'hw-song ' + this.props.className}>
+                   className='hw-song'>
             <div className="hw-song-content">
                 <div className="play-handle-wrapper">
                     <div className="handle-circle">

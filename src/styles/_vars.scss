@@ -37,3 +37,9 @@ $menu_font: 'Oswald', sans-serif;
   font-weight: normal;
   font-style: normal;
 }
+
+/* MEDIA QUERIES
+==========================================*/
+$phone: "screen and (max-width: 640px)";
+$tablet: "screen and (min-width: 641px) and (max-width: 1023px)";
+$desktop: "screen and (min-width: 1024px)";
