@@ -7,7 +7,7 @@ class Playlist extends Component {
     constructor(props) {
         super();
         this.state = {
-            playlistShown: props.active
+            playlistShown: true
         }
     }
 
@@ -21,11 +21,12 @@ class Playlist extends Component {
     }
 
     renderSong(song, idx) {
-        //@TODO create a widget item as have the same functionality - active, click
         return <Song text={song.name}
                      key={idx}
                      img={song.img}
                      onClick={() => this.handleClick(song)}
+                     active_song={this.props.active_song}
+                     playing={this.props.playing}
         />
     }
 
@@ -35,7 +36,7 @@ class Playlist extends Component {
 
     render() {
         let items = this.props.playlist.map(this.renderSong, this);
-        let playlistClass = this.state.playlistShown ? 'hw-playlist' : 'hw-playlist hidden';
+        let playlistClass = (this.state.playlistShown ? 'hw-playlist' : 'hw-playlist hidden');
         return (
             <div className="hw-album-playlist">
                 <div className="hw-album-toggler">

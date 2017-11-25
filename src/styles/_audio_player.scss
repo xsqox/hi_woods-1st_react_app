@@ -89,6 +89,7 @@
 
 .hw-playlist-container {
   flex: 0 0 210px;
+  margin: 10px;
   overflow-y: auto;
   overflow-x: hidden;
   border-left: 1px solid $player_bg;
@@ -209,7 +210,45 @@
   text-align: center;
 }
 
-.handle-circle {
+.song-handle {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  border-bottom: 2px solid $lightFont;
+  margin-bottom: 3px;
+}
+
+.pause-handle {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  margin: 0 auto;
+  width: 0;
+  height: 0;
+
+  &::before {
+    content: '';
+    width: 7px;
+    display: inline-block;
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    border-bottom: 2px solid $lightFont;
+    margin-bottom: 3px;
+  }
+
+  &::after {
+    content: '';
+    width: 7px;
+    display: inline-block;
+    top: 2px;
+    right: -3px;
+    position: absolute;
+    border-bottom: 2px solid $lightFont;
+  }
+}
+
+.play-handle {
   display: inline-block;
   vertical-align: middle;
   position: relative;
@@ -219,7 +258,6 @@
   border-style: solid;
   border-width: 4px 0 4px 8px;
   border-color: transparent transparent transparent $lightFont;
-  transition: all 1s ease-out;
   opacity: 0.7;
   cursor: pointer;
 }
@@ -230,7 +268,6 @@
   border-top: 5px solid transparent;
   border-bottom: 5px solid transparent;
   border-left: 10px solid $lightFont;
-  transition: all 1s ease-out;
   opacity: 0.7;
   cursor: pointer;
 }
@@ -251,6 +288,7 @@
 
   .hw-playlist-container {
     flex: 1 0 140px;
+    margin: 0;
     overflow-x: auto;
     overflow-y: hidden;
   }

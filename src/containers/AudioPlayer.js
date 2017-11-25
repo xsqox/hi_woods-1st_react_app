@@ -55,22 +55,22 @@ class AudioPlayer extends Component {
                         // visual: '/images/albums/vertigo/yoshta_vib.gif'
                     },
                     {
-                        name: 'Less Stress',
-                        img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
-                        src: '/audio/vertigo/less_stress.mp3',
-                        visual: '/images/albums/vertigo/less_stress.gif'
-                    },
-                    {
                         name: 'Roots',
                         img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
                         src: '/audio/vertigo/roots.mp3',
                         visual: '/images/albums/vertigo/roots.gif'
                     },
                     {
+                        name: 'Less Stress',
+                        img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                        src: '/audio/vertigo/less_stress.mp3',
+                        visual: '/images/albums/vertigo/less_stress.gif'
+                    },
+                    {
                         name: 'Trip to Amsterdam',
                         img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
                         src: '/audio/vertigo/trip_to_amsterdam.mp3',
-                        visual: '/images/albums/vertigo/run_and_straight.gif'
+                        visual: '/images/albums/vertigo/trip_to_amsterdam.gif'
                     },
                     {
                         name: 'Talk Our Lives',
@@ -82,13 +82,13 @@ class AudioPlayer extends Component {
                         name: 'Silensia',
                         img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
                         src: '/audio/vertigo/mountain_dew.mp3',
-                        // visual: '/images/albums/vertigo/another.gif'
+                        visual: '/images/albums/vertigo/silensia.gif'
                     },
                     {
                         name: 'Yes Today, No Tomorrow',
                         img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
                         src: '/audio/vertigo/yes_today_no_tomorrow.mp3',
-                        // visual: '/images/albums/vertigo/hello.gif'
+                        visual: '/images/albums/vertigo/yes_today_no_tomorrow.gif'
                     },
                     {
                         name: 'Polaris',
@@ -106,7 +106,8 @@ class AudioPlayer extends Component {
                     {
                         name: 'Mayday Flower',
                         img: '/images/albums/point_c/point_c_cover.jpg',
-                        src: '/audio/point_c/01_mayday_flower.mp3'
+                        src: '/audio/point_c/01_mayday_flower.mp3',
+                        visual: '/images/albums/point_c/mayday_flower.gif',
                     },
                     {
                         name: 'This thing',
@@ -117,7 +118,9 @@ class AudioPlayer extends Component {
                     {
                         name: 'Yoshta Vibe',
                         img: '/images/albums/point_c/point_c_cover.jpg',
-                        src: '/audio/point_c/03_yoshta_vibe.mp3'
+                        src: '/audio/point_c/03_yoshta_vibe.mp3',
+                        visual: '/images/albums/point_c/yoshta_vibe.gif',
+
                     },
                     {
                         name: 'Thru the needles',
@@ -134,7 +137,8 @@ class AudioPlayer extends Component {
                     {
                         name: 'Ocean Ambrozee',
                         img: '/images/albums/point_c/point_c_cover.jpg',
-                        src: '/audio/point_c/06_ocean_ambrozee.mp3'
+                        src: '/audio/point_c/06_ocean_ambrozee.mp3',
+                        visual: '/images/albums/point_c/ocean_ambrosee.gif',
                     },
                     {
                         name: 'Yo Sun',
@@ -150,7 +154,9 @@ class AudioPlayer extends Component {
                     }, {
                         name: 'XC',
                         img: '/images/albums/point_c/point_c_cover.jpg',
-                        src: '/audio/point_c/09_XC.mp3'
+                        src: '/audio/point_c/09_XC.mp3',
+                        visual: '/images/albums/point_c/xc.gif',
+
                     }]
             },]
         };
@@ -168,11 +174,12 @@ class AudioPlayer extends Component {
         return <Playlist
             playing={this.state.playing}
             active={album.name === this.state.active_album}
+            active_song={this.state.active_song.name}
             key={album.name}
             playlist={album.playlist}
             albumName={album.name}
             year={album.year}
-            relay={this.switchSong.bind(this)}
+            relay={this.songPauseOrPlay.bind(this)}
             albumRelay={this.activateAlbum.bind(this)}
         />
     }
@@ -249,8 +256,8 @@ class AudioPlayer extends Component {
 
     updateDimensions() {
         this.setState({
-                viewportWidth: window.innerWidth,
-                viewportHeight: window.innerHeight
+            viewportWidth: window.innerWidth,
+            viewportHeight: window.innerHeight
         });
     }
 
@@ -292,6 +299,22 @@ class AudioPlayer extends Component {
         active_playlist.forEach(song => {
             song.img = album_cover
         });
+    }
+
+    /**
+     * Pauses or starts playing a song when clicked in a playlist
+     */
+    songPauseOrPlay(song) {
+        let alreadyPlaying = (this.state.active_song === song && this.state.playing);
+        if (alreadyPlaying) {
+            this.pauseSong();
+        } else {
+            this.switchSong(song);
+        }
+    }
+
+    pauseSong() {
+        ReactDOM.findDOMNode(this.audioComponent).dispatchEvent(new Event('audio-pause'));
     }
 
     /**

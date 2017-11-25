@@ -7,12 +7,16 @@ class Song extends Component {
                    className='hw-song'>
             <div className="hw-song-content">
                 <div className="play-handle-wrapper">
-                    <div className="handle-circle">
+                    <div className={"song-handle " + (this.checkIfSongPlaying() ? 'pause-handle' : 'play-handle')}>
                     </div>
                 </div>
                 <span className='song-name'>{this.props.text}</span>
             </div>
         </li>
+    }
+
+    checkIfSongPlaying() {
+        return (this.props.active_song === this.props.text && this.props.playing);
     }
 }
 
