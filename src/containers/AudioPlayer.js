@@ -44,47 +44,56 @@ class AudioPlayer extends Component {
                     {
                         name: 'Vertigo',
                         img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
-                        src: '/audio/vertigo/vertigo.mp3'
+                        src: '/audio/vertigo/vertigo.mp3',
+                        visual: '/images/albums/vertigo/vertigo_cover_noise.gif'
                     },
                     {
                         name: 'Laird',
                         img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
-                        src: '/audio/vertigo/laird.mp3'
+                        src: '/audio/vertigo/laird.mp3',
+                        visual: '/images/albums/vertigo/yoshta_vib.gif'
                     },
                     {
                         name: 'Less Stress',
                         img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
-                        src: '/audio/vertigo/less_stress.mp3'
+                        src: '/audio/vertigo/less_stress.mp3',
+                        visual: '/images/albums/vertigo/sea.gif'
                     },
                     {
                         name: 'Roots',
                         img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
-                        src: '/audio/vertigo/roots.mp3'
+                        src: '/audio/vertigo/roots.mp3',
+                        visual: '/images/albums/vertigo/who.gif'
                     },
                     {
                         name: 'Trip to Amsterdam',
                         img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
-                        src: '/audio/vertigo/trip_to_amsterdam.mp3'
+                        src: '/audio/vertigo/trip_to_amsterdam.mp3',
+                        visual: '/images/albums/vertigo/run_and_straight.gif'
                     },
                     {
                         name: 'Talk Our Lives',
                         img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
-                        src: '/audio/vertigo/talk_our_lives.mp3'
+                        src: '/audio/vertigo/talk_our_lives.mp3',
+                        visual: '/images/albums/vertigo/devil.gif'
                     },
                     {
                         name: 'Silensia',
                         img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
-                        src: '/audio/vertigo/mountain_dew.mp3'
+                        src: '/audio/vertigo/mountain_dew.mp3',
+                        visual: '/images/albums/vertigo/another.gif'
                     },
                     {
                         name: 'Yes Today, No Tomorrow',
                         img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
-                        src: '/audio/vertigo/yes_today_no_tomorrow.mp3'
+                        src: '/audio/vertigo/yes_today_no_tomorrow.mp3',
+                        visual: '/images/albums/vertigo/hello.gif'
                     },
                     {
                         name: 'Polaris',
                         img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
-                        src: '/audio/vertigo/polaris.mp3'
+                        src: '/audio/vertigo/polaris.mp3',
+                        visual: '/images/albums/vertigo/polaris.gif'
                     }]
             }, {
                 name: 'Point C',
@@ -171,7 +180,7 @@ class AudioPlayer extends Component {
                         height={this.state.dimensions.viewportHeight}
                         fullPlayer={true}
                         autoPlay={false}
-                        color='#303030'
+                        color='#F5F5F5'
                         playlist={this.getActivePlaylist()}
                         togglePlayView={this.togglePlayView.bind(this)}
 
@@ -238,10 +247,10 @@ class AudioPlayer extends Component {
      * Replaces default album cover with animated gif when player is set to play
      */
     showGIF() {
-        let album_gif = this.state.albums.find((album) => album.name === this.state.active_album).album_gif;
+        // let album_gif = this.state.albums.find((album) => album.name === this.state.active_album).album_gif;
         let active_playlist = this.getActivePlaylist();
         active_playlist.forEach(song => {
-            song.img = album_gif
+            song.img = song.visual
         });
     }
 

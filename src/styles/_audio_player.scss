@@ -6,6 +6,11 @@
     background: $player_bg;
   }
 
+  .audioElements__svgBtnDefault___3VrwT {
+    background: $player_bg;
+    color: $lightFont;
+  }
+
   &.playing {
     .audioElements__commentsWrapperBackgroundMask___3LMXR, .audioElements__albumCoverContainer___E0mbQ {
       display: none;
@@ -24,7 +29,7 @@
   overflow-y: scroll;
   overflow-x: hidden;
   height: 100%;
-  border-left: 1px solid $darkFont;
+  border-left: 1px solid $player_bg;
   z-index: 111;
   background: $player_bg;
   opacity: 1;
@@ -33,7 +38,7 @@
 
 .hw-playlist {
   margin-left: 10px;
-  color: $darkerFont;
+  color: $lightFont;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -51,7 +56,7 @@
   position: relative;
   width: 180px;
   vertical-align: middle;
-  font-family: $player_font, cursive;
+  font-family: $lightFont, cursive;
   text-align: left;
   margin: 5px;
   padding: 5px;
@@ -69,7 +74,8 @@
 
 .hw-album-toggler {
   width: 98%;
-  font-family: $player_font, cursive;
+  color: $lightFont;
+  font-family: $lightFont, cursive;
   text-align: left;
   margin: 5px;
   padding: 5px;
@@ -81,7 +87,7 @@
   }
 
   .glitch {
-    color: $darkerFont;
+    color: $lightFont;
     font-size: 1em;
     position: relative;
     display: inline-block;
@@ -101,10 +107,10 @@
   .glitch:after {
     content: attr(data-text);
     position: absolute;
-    left: 1px;
-    text-shadow: -1px 0 red;
+    left: 2px;
+    text-shadow: -2px 0 red;
     top: 0;
-    color: $darkerFont;
+    color: $lightFont;
     background: $player_bg;
     overflow: hidden;
     clip: rect(0, 900px, 0, 0);
@@ -122,10 +128,10 @@
   .glitch:before {
     content: attr(data-text);
     position: absolute;
-    left: -1px;
-    text-shadow: 1px 0 blue;
+    left: -2px;
+    text-shadow: 2px 0 blue;
     top: 0;
-    color: $darkerFont;
+    color: $lightFont;
     background: $player_bg;
     overflow: hidden;
     clip: rect(0, 900px, 0, 0);
@@ -151,7 +157,7 @@
   height: 0;
   border-style: solid;
   border-width: 4px 0 4px 8px;
-  border-color: transparent transparent transparent $darkerFont;
+  border-color: transparent transparent transparent $lightFont;
   transition: all 1s ease-out;
   opacity: 0.7;
   cursor: pointer;
@@ -162,7 +168,7 @@
   vertical-align: middle;
   border-top: 5px solid transparent;
   border-bottom: 5px solid transparent;
-  border-left: 10px solid $darkFont;
+  border-left: 10px solid $lightFont;
   transition: all 1s ease-out;
   opacity: 0.7;
   cursor: pointer;
@@ -171,5 +177,5 @@
 .play-album-handle {
   border-style: solid;
   border-width: 10px 5px 0 5px;
-  border-color: $darkerFont transparent transparent transparent;
+  border-color: $lightFont transparent transparent transparent;
 }
