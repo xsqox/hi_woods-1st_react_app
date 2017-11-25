@@ -1,12 +1,7 @@
 import React, {Component} from 'react';
-import { NavLink } from 'react-router-dom';
+import MediaQuery from 'react-responsive';
 
 class Bio extends Component {
-
-    //@TODO remove router
-    switchToListen() {
-        this.props.relay('#listen');
-    }
 
     render() {
         return <div className="view-container hw-bio">
@@ -16,8 +11,22 @@ class Bio extends Component {
                 spaces, we bring you <tt>#post-minimal</tt>, <tt>#dream-minimal</tt>, <tt>#dance-ambient</tt> from Point Canada.</p>
             <p>It's rainfallish techno beats coupled with funky synth slowly transforming into trippy dream hop
                 just to give way to airy piano passages...</p>
-            <p>Anyway, less words, more woods! <a className="brand brand-action" href='#listen'>Listen</a> and hope you enjoy.
-            </p>
+            <MediaQuery query={this.props.mediaQueries.phone}>
+                <p className="hw-good-wish">Anyway, less words, more woods! <a className="brand brand-action" href='#listen'>Listen</a> and hope you enjoy.
+                </p>
+            </MediaQuery>
+            <MediaQuery query={this.props.mediaQueries.small_tablet}>
+                <p className="hw-good-wish inverse">Anyway, less words, more woods! <a className="brand brand-action inverse" href='#listen'>Listen</a> and hope you enjoy.
+                </p>
+            </MediaQuery>
+            <MediaQuery query={this.props.mediaQueries.tablet}>
+                <p className="hw-good-wish">Anyway, less words, more woods! <a className="brand brand-action" href='#listen'>Listen</a> and hope you enjoy.
+                </p>
+            </MediaQuery>
+            <MediaQuery query={this.props.mediaQueries.desktop}>
+                <p className="hw-good-wish">Anyway, less words, more woods! <a className="brand brand-action" href='#listen'>Listen</a> and hope you enjoy.
+                </p>
+            </MediaQuery>
         </div>
     }
 }

@@ -8,13 +8,22 @@ import '../styles/hover-min.css';
 import '../styles/App.css';
 
 //@TODO extend components instead of using public methods
-//@TODO make responsive
 //@TODO setup compass
 //@TODO add sharing
 //@TODO embed Youtube video
 //@TODO add gallery / Instagram feed
 
 class App extends Component {
+
+    constructor() {
+        super();
+        this.mediaQueries  = {
+            phone: "(max-device-width: 639px)",
+            small_tablet: "(min-device-width: 640px) and (max-device-width: 767px)",
+            tablet: "(min-device-width: 768px) and (max-device-width: 1023px)",
+            desktop: "(min-width: 1024px)"
+        }
+    }
 
     render() {
         let options = {
@@ -39,13 +48,13 @@ class App extends Component {
                     <SectionsContainer {...options} ref={sectionsContainer => {
                         this.sectionsContainer = sectionsContainer
                     } }>
-                        <Section><Bio /></Section>
+                        <Section><Bio mediaQueries={this.mediaQueries} /></Section>
                         <Section>
-                            <AudioPlayer
+                            <AudioPlayer mediaQueries={this.mediaQueries}
                                 disableScroll={() => {this.disableFullPageScroll()}}
                                 enableScroll={() => {this.enableFullPageScroll()}}/>
                         </Section>
-                        <Section><Contact /></Section>
+                        <Section><Contact mediaQueries={this.mediaQueries} /></Section>
                     </SectionsContainer>
                 </div>
             </div>

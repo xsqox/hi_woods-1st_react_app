@@ -29,10 +29,10 @@ class AudioPlayer extends Component {
             mediaQueries: {
                 phone: {
                     min: 0,
-                    max: 640
+                    max: 639
                 },
                 tablet: {
-                    min: 641,
+                    min: 640,
                     max: 1023
                 },
                 desktop: {

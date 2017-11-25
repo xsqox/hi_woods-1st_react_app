@@ -13,6 +13,26 @@
   font-size: 1.1em;
   cursor: pointer;
   text-decoration: none;
+
+  &.inverse {
+    color: $greyFont;
+
+    &:visited {
+      color: $greyFont;
+    }
+
+    &:focus {
+      color: $greyFont;
+      text-shadow: 1px 1px 5px #ddd;
+    }
+  }
+}
+
+.hw-good-wish {
+
+  &.inverse {
+    color: $greyFont;
+  }
 }
 
 

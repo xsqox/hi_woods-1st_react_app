@@ -11,3 +11,28 @@
   margin: 10px 55px 10px 0;
   display: inline-block;
 }
+
+@media #{$small_tablet} {
+
+  .hw-contacts {
+    margin-top: 0;
+    color: $lightFont;
+  }
+
+  .contact-link {
+    margin: 10px 55px 10px 0;
+
+      a {
+        color: $greyFont;
+
+        &:visited {
+          color: $greyFont;
+        }
+
+        &:focus {
+          color: $greyFont;
+          text-shadow: 1px 1px 5px #ddd;
+        }
+      }
+  }
+}
