@@ -17,6 +17,7 @@ class App extends Component {
 
     constructor() {
         super();
+        this.pages =  ['about', 'listen', 'contact'];
         this.mediaQueries  = {
             phone: "(max-device-width: 639px)",
             small_tablet: "(min-device-width: 640px) and (max-device-width: 767px)",
@@ -29,7 +30,7 @@ class App extends Component {
         let options = {
             activeClass: 'active',
             sectionClassName: 'section',
-            anchors: ['about', 'listen', 'contact'],
+            anchors: this.pages,
             scrollBar: false,
             delay: 500,
             navigation: false,
@@ -37,6 +38,7 @@ class App extends Component {
             sectionPaddingTop: '0',
             sectionPaddingBottom: '0',
             arrowNavigation: true,
+            activeSection: this.getActiveSection()
         };
 
         return (
@@ -76,21 +78,11 @@ class App extends Component {
     }
 
     componentDidMount() {
-        this.scrollToAnchor();
-        window.onhashchange = this.scrollToAnchor.bind(this);
+        this.addActiveMenuClass();
     }
 
-    /**
-     * Scrolls to the correct view based on url hash
-     */
-    scrollToAnchor() {
-        // Decode entities in the URL
-        window.location.hash = window.decodeURIComponent(window.location.hash);
-        const hashParts = window.location.hash.split('#');
-        if (hashParts.length > 2) {
-            const hash = hashParts.slice(-1)[0];
-            document.querySelector(`${hash}`).scrollIntoView();
-        }
+    getActiveSection() {
+        return this.pages.indexOf(window.location.hash.split('#')[1]);
     }
 
     /**
@@ -98,8 +90,20 @@ class App extends Component {
      * @param anchor
      */
     handleMenuClick(anchor) {
+        this.removeActiveMenuClass();
         window.location.hash = anchor;
         window.dispatchEvent(new Event("hashchange"));
+    }
+
+    removeActiveMenuClass() {
+        document.querySelectorAll('.hover-shadow a').forEach((a) => {
+            a.classList.remove('active');
+        });
+    }
+
+    addActiveMenuClass() {
+        let hash = window.location.hash;
+        document.querySelector(`a[href="${hash}"]`).classList.add('active');
     }
 }
 
