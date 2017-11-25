@@ -229,22 +229,24 @@
   &::before {
     content: '';
     width: 7px;
+    height: 11px;
     display: inline-block;
     position: absolute;
     top: -3px;
-    right: -3px;
-    border-bottom: 2px solid $lightFont;
+    left: -6px;
+    border-left: 2px solid $lightFont;
     margin-bottom: 3px;
   }
 
   &::after {
     content: '';
     width: 7px;
+    height: 11px;
     display: inline-block;
-    top: 2px;
-    right: -3px;
+    top: -3px;
+    left: -1px;
     position: absolute;
-    border-bottom: 2px solid $lightFont;
+    border-left: 2px solid $lightFont;
   }
 }
 
