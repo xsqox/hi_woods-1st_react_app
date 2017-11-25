@@ -26,19 +26,7 @@ class AudioPlayer extends Component {
             viewportHeight: window.innerHeight,
             songWidth: 210,
             songHeight: 140,
-            mediaQueries: {
-                phone: {
-                    min: 0,
-                    max: 639
-                },
-                tablet: {
-                    min: 640,
-                    max: 1023
-                },
-                desktop: {
-                    min: 1024
-                }
-            },
+
 
             active_song: {
                 name: 'Vertigo',
@@ -64,19 +52,19 @@ class AudioPlayer extends Component {
                         name: 'Laird',
                         img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
                         src: '/audio/vertigo/laird.mp3',
-                        visual: '/images/albums/vertigo/yoshta_vib.gif'
+                        // visual: '/images/albums/vertigo/yoshta_vib.gif'
                     },
                     {
                         name: 'Less Stress',
                         img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
                         src: '/audio/vertigo/less_stress.mp3',
-                        visual: '/images/albums/vertigo/sea.gif'
+                        visual: '/images/albums/vertigo/less_stress.gif'
                     },
                     {
                         name: 'Roots',
                         img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
                         src: '/audio/vertigo/roots.mp3',
-                        visual: '/images/albums/vertigo/who.gif'
+                        visual: '/images/albums/vertigo/roots.gif'
                     },
                     {
                         name: 'Trip to Amsterdam',
@@ -88,19 +76,19 @@ class AudioPlayer extends Component {
                         name: 'Talk Our Lives',
                         img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
                         src: '/audio/vertigo/talk_our_lives.mp3',
-                        visual: '/images/albums/vertigo/devil.gif'
+                        visual: '/images/albums/vertigo/talk_our_lives.gif'
                     },
                     {
                         name: 'Silensia',
                         img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
                         src: '/audio/vertigo/mountain_dew.mp3',
-                        visual: '/images/albums/vertigo/another.gif'
+                        // visual: '/images/albums/vertigo/another.gif'
                     },
                     {
                         name: 'Yes Today, No Tomorrow',
                         img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
                         src: '/audio/vertigo/yes_today_no_tomorrow.mp3',
-                        visual: '/images/albums/vertigo/hello.gif'
+                        // visual: '/images/albums/vertigo/hello.gif'
                     },
                     {
                         name: 'Polaris',
@@ -123,7 +111,8 @@ class AudioPlayer extends Component {
                     {
                         name: 'This thing',
                         img: '/images/albums/point_c/point_c_cover.jpg',
-                        src: '/audio/point_c/02_this_thing.mp3'
+                        src: '/audio/point_c/02_this_thing.mp3',
+                        visual: '/images/albums/point_c/this_thing.gif',
                     },
                     {
                         name: 'Yoshta Vibe',
@@ -133,12 +122,14 @@ class AudioPlayer extends Component {
                     {
                         name: 'Thru the needles',
                         img: '/images/albums/point_c/point_c_cover.jpg',
-                        src: '/audio/point_c/04_thru_the_needles.mp3'
+                        src: '/audio/point_c/04_thru_the_needles.mp3',
+                        visual: '/images/albums/point_c/thru_the_needles.gif',
                     },
                     {
                         name: 'Planet Search',
                         img: '/images/albums/point_c/point_c_cover.jpg',
-                        src: '/audio/point_c/05_planet_search.mp3'
+                        src: '/audio/point_c/05_planet_search.mp3',
+                        visual: '/images/albums/point_c/point_c.gif'
                     },
                     {
                         name: 'Ocean Ambrozee',
@@ -148,12 +139,14 @@ class AudioPlayer extends Component {
                     {
                         name: 'Yo Sun',
                         img: '/images/albums/point_c/point_c_cover.jpg',
-                        src: '/audio/point_c/07_yo_sun.mp3'
+                        src: '/audio/point_c/07_yo_sun.mp3',
+                        visual: '/images/albums/point_c/yo_sun.gif',
                     },
                     {
                         name: 'UA',
                         img: '/images/albums/point_c/point_c_cover.jpg',
-                        src: '/audio/point_c/08_UA.mp3'
+                        src: '/audio/point_c/08_UA.mp3',
+                        visual: '/images/albums/point_c/ua.gif'
                     }, {
                         name: 'XC',
                         img: '/images/albums/point_c/point_c_cover.jpg',
@@ -185,9 +178,21 @@ class AudioPlayer extends Component {
     }
 
     calculatePlayerDimensions() {
+        let mediaQueries = {
+            phone: {
+                min: 0,
+                max: 639
+            },
+            tablet: {
+                min: 640,
+                max: 1023
+            },
+            desktop: {
+                min: 1024
+            }
+        };
         let playerWidth = this.state.viewportWidth - this.state.songWidth;
         let playerHeight = this.state.viewportHeight;
-        let mediaQueries = this.state.mediaQueries;
         Object.keys(mediaQueries).forEach((key) => {
             if (key === 'phone' && this.state.viewportWidth >= mediaQueries[key].min && this.state.viewportWidth <= mediaQueries[key].max) {
                 playerWidth = this.state.viewportWidth;

@@ -11,6 +11,7 @@ body {
   background-size: 100% 100%;
   height: 100%;
   overflow: hidden;
+  text-wrap: none;
 
   * {
     margin-top: 0;
@@ -29,7 +30,12 @@ header {
 
 .view-container {
   position: relative;
-  margin: 60px 50px;
+  margin: 100px 50px;
+}
+
+.content-wrapper {
+  width: 70%;
+  margin: 0 auto;
 }
 
 .full-view-container {
@@ -84,13 +90,46 @@ pre {
 @media #{$phone} {
 
   .view-container {
-    margin: 55px 15px;
+    margin: 50px 15px;
+  }
+
+  .content-wrapper {
+    width: 100%;
   }
 }
 
 @media #{$small_tablet} {
 
   .view-container {
-    margin: 55px 20px;
+    margin: 50px 20px;
+  }
+
+  .content-wrapper {
+    width: 100%;
+  }
+}
+
+@media #{$desktop} {
+
+  body {
+    font-size: $desktopFontSize;
+  }
+}
+
+@media #{$small_desktop} {
+
+  body {
+    font-size: $tabletFontSize;
+  }
+}
+
+@media #{$tablet} {
+
+  body {
+    font-size: $tabletFontSize;
+  }
+
+  .content-wrapper {
+    width: 80%;
   }
 }

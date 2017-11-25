@@ -27,7 +27,8 @@ body {
   background: url("../../public/images/bg_cover.jpg") no-repeat fixed;
   background-size: 100% 100%;
   height: 100%;
-  overflow: hidden; }
+  overflow: hidden;
+  text-wrap: none; }
   body * {
     margin-top: 0;
     margin-bottom: 0;
@@ -41,7 +42,11 @@ header {
 
 .view-container {
   position: relative;
-  margin: 60px 50px; }
+  margin: 100px 50px; }
+
+.content-wrapper {
+  width: 70%;
+  margin: 0 auto; }
 
 .full-view-container {
   position: relative;
@@ -79,11 +84,29 @@ pre {
 
 @media screen and (max-width: 639px) {
   .view-container {
-    margin: 55px 15px; } }
+    margin: 50px 15px; }
+  .content-wrapper {
+    width: 100%; } }
 
 @media screen and (min-width: 640px) and (max-width: 767px) {
   .view-container {
-    margin: 55px 20px; } }
+    margin: 50px 20px; }
+  .content-wrapper {
+    width: 100%; } }
+
+@media screen and (min-width: 1366px) {
+  body {
+    font-size: 30px; } }
+
+@media screen and (min-width: 1024px) and (max-width: 1365px) {
+  body {
+    font-size: 25px; } }
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  body {
+    font-size: 25px; }
+  .content-wrapper {
+    width: 80%; } }
 
 .hw-menu {
   overflow: auto;
@@ -149,7 +172,7 @@ pre {
     width: 450px !important;
     height: 450px !important; } }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1366px) {
   .hw-player-component .audioElements__albumCoverContainer___E0mbQ {
     justify-content: space-between;
     padding: 30px 0 0 30px;
@@ -171,7 +194,7 @@ pre {
   opacity: 1; }
 
 .hw-playlist {
-  margin-left: 10px;
+  margin: 0 0 45px 10px;
   color: #f5f5f5;
   padding: 0;
   display: flex;
@@ -191,7 +214,8 @@ pre {
   text-align: left;
   margin: 5px;
   padding: 5px;
-  font-size: 0.8em; }
+  font-size: 0.8em;
+  cursor: pointer; }
   .hw-song .song-name {
     display: table-cell;
     vertical-align: middle;
@@ -209,7 +233,8 @@ pre {
   text-align: left;
   margin: 5px;
   padding: 5px;
-  font-size: 1em; }
+  font-size: 1em;
+  cursor: pointer; }
   .hw-album-toggler .hw-album-name {
     display: inline-block; }
   .hw-album-toggler .glitch {
@@ -222,47 +247,47 @@ pre {
 
 @keyframes noise-anim {
   0% {
-    clip: rect(15px, 9999px, 37px, 0); }
+    clip: rect(96px, 9999px, 87px, 0); }
   5% {
-    clip: rect(77px, 9999px, 73px, 0); }
+    clip: rect(89px, 9999px, 50px, 0); }
   10% {
-    clip: rect(45px, 9999px, 85px, 0); }
+    clip: rect(17px, 9999px, 21px, 0); }
   15% {
-    clip: rect(24px, 9999px, 10px, 0); }
+    clip: rect(60px, 9999px, 16px, 0); }
   20% {
-    clip: rect(99px, 9999px, 33px, 0); }
+    clip: rect(9px, 9999px, 87px, 0); }
   25% {
-    clip: rect(8px, 9999px, 36px, 0); }
+    clip: rect(62px, 9999px, 38px, 0); }
   30% {
-    clip: rect(56px, 9999px, 42px, 0); }
+    clip: rect(27px, 9999px, 33px, 0); }
   35% {
-    clip: rect(57px, 9999px, 90px, 0); }
+    clip: rect(24px, 9999px, 29px, 0); }
   40% {
-    clip: rect(98px, 9999px, 79px, 0); }
+    clip: rect(21px, 9999px, 96px, 0); }
   45% {
-    clip: rect(57px, 9999px, 12px, 0); }
+    clip: rect(89px, 9999px, 19px, 0); }
   50% {
-    clip: rect(10px, 9999px, 90px, 0); }
+    clip: rect(54px, 9999px, 49px, 0); }
   55% {
-    clip: rect(63px, 9999px, 95px, 0); }
+    clip: rect(54px, 9999px, 45px, 0); }
   60% {
-    clip: rect(37px, 9999px, 12px, 0); }
+    clip: rect(25px, 9999px, 80px, 0); }
   65% {
-    clip: rect(21px, 9999px, 30px, 0); }
+    clip: rect(34px, 9999px, 9px, 0); }
   70% {
-    clip: rect(22px, 9999px, 79px, 0); }
+    clip: rect(26px, 9999px, 33px, 0); }
   75% {
-    clip: rect(14px, 9999px, 38px, 0); }
+    clip: rect(55px, 9999px, 84px, 0); }
   80% {
-    clip: rect(83px, 9999px, 25px, 0); }
+    clip: rect(86px, 9999px, 86px, 0); }
   85% {
-    clip: rect(14px, 9999px, 80px, 0); }
+    clip: rect(46px, 9999px, 79px, 0); }
   90% {
-    clip: rect(23px, 9999px, 8px, 0); }
+    clip: rect(95px, 9999px, 17px, 0); }
   95% {
-    clip: rect(5px, 9999px, 12px, 0); }
+    clip: rect(9px, 9999px, 10px, 0); }
   100% {
-    clip: rect(90px, 9999px, 20px, 0); } }
+    clip: rect(56px, 9999px, 25px, 0); } }
   .hw-album-toggler .glitch:after {
     content: attr(data-text);
     position: absolute;
@@ -277,47 +302,47 @@ pre {
 
 @keyframes noise-anim-2 {
   0% {
-    clip: rect(5px, 9999px, 66px, 0); }
+    clip: rect(91px, 9999px, 15px, 0); }
   5% {
-    clip: rect(9px, 9999px, 54px, 0); }
+    clip: rect(37px, 9999px, 11px, 0); }
   10% {
-    clip: rect(77px, 9999px, 9px, 0); }
+    clip: rect(8px, 9999px, 36px, 0); }
   15% {
-    clip: rect(21px, 9999px, 46px, 0); }
+    clip: rect(50px, 9999px, 97px, 0); }
   20% {
-    clip: rect(19px, 9999px, 54px, 0); }
+    clip: rect(13px, 9999px, 75px, 0); }
   25% {
-    clip: rect(51px, 9999px, 49px, 0); }
+    clip: rect(100px, 9999px, 97px, 0); }
   30% {
-    clip: rect(39px, 9999px, 64px, 0); }
+    clip: rect(37px, 9999px, 33px, 0); }
   35% {
-    clip: rect(81px, 9999px, 46px, 0); }
+    clip: rect(38px, 9999px, 36px, 0); }
   40% {
-    clip: rect(75px, 9999px, 7px, 0); }
+    clip: rect(1px, 9999px, 87px, 0); }
   45% {
-    clip: rect(91px, 9999px, 87px, 0); }
+    clip: rect(99px, 9999px, 50px, 0); }
   50% {
-    clip: rect(62px, 9999px, 49px, 0); }
+    clip: rect(94px, 9999px, 64px, 0); }
   55% {
-    clip: rect(19px, 9999px, 35px, 0); }
+    clip: rect(82px, 9999px, 14px, 0); }
   60% {
-    clip: rect(11px, 9999px, 23px, 0); }
+    clip: rect(78px, 9999px, 74px, 0); }
   65% {
-    clip: rect(34px, 9999px, 23px, 0); }
+    clip: rect(9px, 9999px, 35px, 0); }
   70% {
-    clip: rect(74px, 9999px, 55px, 0); }
+    clip: rect(35px, 9999px, 30px, 0); }
   75% {
-    clip: rect(85px, 9999px, 69px, 0); }
+    clip: rect(96px, 9999px, 51px, 0); }
   80% {
-    clip: rect(100px, 9999px, 49px, 0); }
+    clip: rect(61px, 9999px, 30px, 0); }
   85% {
-    clip: rect(64px, 9999px, 10px, 0); }
+    clip: rect(56px, 9999px, 3px, 0); }
   90% {
-    clip: rect(72px, 9999px, 93px, 0); }
+    clip: rect(36px, 9999px, 86px, 0); }
   95% {
-    clip: rect(28px, 9999px, 36px, 0); }
+    clip: rect(57px, 9999px, 53px, 0); }
   100% {
-    clip: rect(23px, 9999px, 75px, 0); } }
+    clip: rect(13px, 9999px, 12px, 0); } }
   .hw-album-toggler .glitch:before {
     content: attr(data-text);
     position: absolute;
@@ -387,7 +412,8 @@ pre {
   .hw-playlist {
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: flex-start; }
+    justify-content: flex-start;
+    margin: 0 0 0 10px; }
   .hw-song {
     flex: 1 0 60px;
     margin: 0 5px; }
@@ -397,21 +423,29 @@ pre {
     border-left: 10px solid #f5f5f5; } }
 
 .hw-contacts {
-  margin-top: 15px;
+  margin-bottom: 15px;
   margin-left: 0;
   padding: 0;
-  display: inline-block; }
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center; }
 
 .contact-link {
-  margin: 10px 55px 10px 0;
+  margin: 10px 35px 10px 0;
   display: inline-block; }
+
+@media screen and (max-width: 639px) {
+  .hw-contacts {
+    margin-bottom: 30px; } }
 
 @media screen and (min-width: 640px) and (max-width: 767px) {
   .hw-contacts {
-    margin-top: 0;
+    margin: 15px 0 5px 0;
     color: #f5f5f5; }
   .contact-link {
-    margin: 10px 55px 10px 0; }
+    margin: 10px 30px 10px 0; }
     .contact-link a {
       color: #b0b0b0; }
       .contact-link a:visited {
@@ -436,5 +470,7 @@ pre {
       color: #b0b0b0;
       text-shadow: 1px 1px 5px #ddd; }
 
-.hw-good-wish.inverse {
-  color: #b0b0b0; }
+.hw-good-wish {
+  text-align: center; }
+  .hw-good-wish.inverse {
+    color: #b0b0b0; }

@@ -8,6 +8,7 @@ import '../styles/hover-min.css';
 import '../styles/App.css';
 
 //@TODO extend components instead of using public methods
+//@TODO create logo
 //@TODO setup compass
 //@TODO add sharing
 //@TODO embed Youtube video
@@ -23,6 +24,9 @@ class App extends Component {
             small_tablet: "(min-device-width: 640px) and (max-device-width: 767px)",
             tablet: "(min-device-width: 768px) and (max-device-width: 1023px)",
             desktop: "(min-width: 1024px)"
+        };
+        this.state = {
+            activePage: `#${this.pages[this.getActivePageIndex()]}`
         }
     }
 
@@ -38,13 +42,13 @@ class App extends Component {
             sectionPaddingTop: '0',
             sectionPaddingBottom: '0',
             arrowNavigation: true,
-            activeSection: this.getActiveSection()
+            activeSection: this.getActivePageIndex()
         };
 
         return (
             <div className="hw-app">
                 <Header>
-                    <PageMenu menuClickRelay={this.handleMenuClick.bind(this)}/>
+                    <PageMenu activePage={this.state.activePage} menuClickRelay={this.handleMenuClick.bind(this)}/>
                 </Header>
                 <div className="hw-main">
                     <SectionsContainer {...options} ref={sectionsContainer => {
@@ -64,6 +68,20 @@ class App extends Component {
     }
 
     /**
+     * Updates hash by clicked menu linked anchor and trigger event
+     * @param anchor
+     */
+    handleMenuClick(anchor) {
+        this.setState({
+            activePage: anchor
+        });
+    }
+
+    getActivePageIndex() {
+        return (window.location.hash) ? this.pages.indexOf(window.location.hash.split('#')[1]) : this.pages.indexOf('about');
+    }
+
+    /**
      * Hacky fix to prevent full page scroll on div with their own scroll ??? how to do it right ???
      */
     disableFullPageScroll() {
@@ -75,35 +93,6 @@ class App extends Component {
      */
     enableFullPageScroll() {
         this.sectionsContainer._addMouseWheelEventHandlers();
-    }
-
-    componentDidMount() {
-        this.addActiveMenuClass();
-    }
-
-    getActiveSection() {
-        return this.pages.indexOf(window.location.hash.split('#')[1]);
-    }
-
-    /**
-     * Updates hash by clicked menu linked anchor and trigger event
-     * @param anchor
-     */
-    handleMenuClick(anchor) {
-        this.removeActiveMenuClass();
-        window.location.hash = anchor;
-        window.dispatchEvent(new Event("hashchange"));
-    }
-
-    removeActiveMenuClass() {
-        document.querySelectorAll('.hover-shadow a').forEach((a) => {
-            a.classList.remove('active');
-        });
-    }
-
-    addActiveMenuClass() {
-        let hash = window.location.hash;
-        document.querySelector(`a[href="${hash}"]`).classList.add('active');
     }
 }
 

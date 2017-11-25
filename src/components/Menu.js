@@ -1,16 +1,15 @@
 import React, {Component} from 'react';
-import { NavLink } from 'react-router-dom';
+
 import '../styles/hover-min.css';
 
 class MenuItem extends Component {
 
     render() {
         return <li className='hover-shadow'>
-            <NavLink onClick={() => this.props.onClick(this.props.url)}
-                     exact
-                     activeClassName='active'
-                     to={this.props.url}>{this.props.text}
-            </NavLink>
+            <a onClick={() => this.props.onClick(this.props.url)}
+                     href={this.props.url}
+               className={this.props.active ? "active" : ""}
+            >{this.props.text}</a>
         </li>
     }
 }
@@ -32,7 +31,7 @@ class PageMenu extends Component {
     }
 
     generateItem(item) {
-        return <MenuItem text={item.text} url={item.url}
+        return <MenuItem text={item.text} url={item.url} active={(item.url === this.props.activePage)}
                          key={item.id} onClick={() => {this.handleClick(item.url)}}  />
     }
 

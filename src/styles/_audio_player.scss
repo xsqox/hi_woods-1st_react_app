@@ -97,7 +97,7 @@
 }
 
 .hw-playlist {
-  margin-left: 10px;
+  margin: 0 0 45px 10px;
   color: $lightFont;
   padding: 0;
   display: flex;
@@ -120,6 +120,7 @@
   margin: 5px;
   padding: 5px;
   font-size: 0.8em;
+  cursor: pointer;
 
   .song-name {
     display: table-cell;
@@ -141,6 +142,7 @@
   margin: 5px;
   padding: 5px;
   font-size: 1em;
+  cursor: pointer;
 
   .hw-album-name {
     display: inline-block;
@@ -270,6 +272,8 @@
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: flex-start;
+    margin: 0 0 0 10px;
+
   }
 
   .hw-song {

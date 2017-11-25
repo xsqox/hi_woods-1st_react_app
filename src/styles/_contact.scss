@@ -1,26 +1,37 @@
 // CONTACTS VIEW //
 
 .hw-contacts {
-  margin-top: 15px;
+  margin-bottom: 15px;
   margin-left: 0;
   padding: 0;
-  display: inline-block;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .contact-link {
-  margin: 10px 55px 10px 0;
+  margin: 10px 35px 10px 0;
   display: inline-block;
+}
+
+@media #{$phone} {
+
+  .hw-contacts {
+    margin-bottom: 30px;
+  }
 }
 
 @media #{$small_tablet} {
 
   .hw-contacts {
-    margin-top: 0;
+    margin: 15px 0 5px 0;
     color: $lightFont;
   }
 
   .contact-link {
-    margin: 10px 55px 10px 0;
+    margin: 10px 30px 10px 0;
 
       a {
         color: $greyFont;

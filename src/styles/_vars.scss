@@ -12,6 +12,8 @@ $galleryBorder: 1px solid #fff;
 
 /*fonts */
 $defaultFontSize: 20px;
+$desktopFontSize: 30px;
+$tabletFontSize: 25px;
 $defaultFontFamily: 'Muli', sans-serif;
 $brandFont: 'manic-depressiveregular', serif;
 $player_font: 'Quicksand', sans-serif;
@@ -44,4 +46,5 @@ $menu_font: 'Oswald', sans-serif;
 $phone: "screen and (max-width: 639px)";
 $small_tablet: "screen and (min-width: 640px) and (max-width: 767px)";
 $tablet: "screen and (min-width: 768px) and (max-width: 1023px)";
-$desktop: "screen and (min-width: 1024px)";
+$small_desktop: "screen and (min-width: 1024px) and (max-width: 1365px)";
+$desktop: "screen and (min-width:1366px)";
