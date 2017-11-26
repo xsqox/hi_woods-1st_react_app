@@ -24,9 +24,8 @@ class AudioPlayer extends Component {
         this.state = {
             viewportWidth: window.innerWidth,
             viewportHeight: window.innerHeight,
-            songWidth: 210,
+            songWidth: 230,
             songHeight: 140,
-
 
             active_song: {
                 name: 'Vertigo',
@@ -36,67 +35,80 @@ class AudioPlayer extends Component {
             active_album: 'Vertigo',
             playing: false,
             albums: [{
+                active: true,
                 name: 'Vertigo',
                 year: '2017',
                 source: '/audio/vertigo/',
                 album_cover: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
                 album_gif: '/images/albums/vertigo/vertigo_cover_noise.gif',
-                playlist: [
-                    {
-                        name: 'Vertigo',
-                        img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
-                        src: '/audio/vertigo/vertigo.mp3',
-                        visual: '/images/albums/vertigo/vertigo_cover_noise.gif'
-                    },
-                    {
-                        name: 'Laird',
-                        img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
-                        src: '/audio/vertigo/laird.mp3',
-                        // visual: '/images/albums/vertigo/yoshta_vib.gif'
-                    },
-                    {
-                        name: 'Roots',
-                        img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
-                        src: '/audio/vertigo/roots.mp3',
-                        visual: '/images/albums/vertigo/roots.gif'
-                    },
-                    {
-                        name: 'Less Stress',
-                        img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
-                        src: '/audio/vertigo/less_stress.mp3',
-                        visual: '/images/albums/vertigo/less_stress.gif'
-                    },
-                    {
-                        name: 'Trip to Amsterdam',
-                        img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
-                        src: '/audio/vertigo/trip_to_amsterdam.mp3',
-                        visual: '/images/albums/vertigo/trip_to_amsterdam.gif'
-                    },
-                    {
-                        name: 'Talk Our Lives',
-                        img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
-                        src: '/audio/vertigo/talk_our_lives.mp3',
-                        visual: '/images/albums/vertigo/talk_our_lives.gif'
-                    },
-                    {
-                        name: 'Silensia',
-                        img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
-                        src: '/audio/vertigo/mountain_dew.mp3',
-                        visual: '/images/albums/vertigo/silensia.gif'
-                    },
-                    {
-                        name: 'Yes Today, No Tomorrow',
-                        img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
-                        src: '/audio/vertigo/yes_today_no_tomorrow.mp3',
-                        visual: '/images/albums/vertigo/yes_today_no_tomorrow.gif'
-                    },
-                    {
-                        name: 'Polaris',
-                        img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
-                        src: '/audio/vertigo/polaris.mp3',
-                        visual: '/images/albums/vertigo/polaris.gif'
-                    }]
+                playlist: [{
+                    name: 'Vertigo',
+                    img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                    src: '/audio/vertigo/01.vertigo.mp3',
+                    visual: '/images/albums/vertigo/vertigo_cover_noise.gif'
+                }, {
+                    name: '6.14',
+                    img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                    src: '/audio/vertigo/02.6.14.mp3',
+                    visual: '/images/albums/vertigo/6.14.gif'
+                }, {
+                    name: 'Why it ends so fast',
+                    img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                    src: '/audio/vertigo/03.sad_vibes.mp3',
+                    visual: '/images/albums/vertigo/sad_vibes.gif'
+                }, {
+                    name: 'Trip to Amsterdam',
+                    img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                    src: '/audio/vertigo/04.trip_to_amsterdam.mp3',
+                    visual: '/images/albums/vertigo/trip_to_amsterdam.gif'
+                }, {
+                    name: 'Dream Place',
+                    img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                    src: '/audio/vertigo/05.dream.place.mp3',
+                    visual: '/images/albums/vertigo/dream_place.gif'
+                }, {
+                    name: 'Slack',
+                    img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                    src: '/audio/vertigo/06.slack.mp3',
+                    visual: '/images/albums/vertigo/slack.gif'
+                }, {
+                    name: 'Less Stress',
+                    img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                    src: '/audio/vertigo/07.less_stress.mp3',
+                    visual: '/images/albums/vertigo/less_stress.gif'
+                }, {
+                    name: 'Drone Dub',
+                    img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                    src: '/audio/vertigo/08.drone_dub.mp3',
+                    visual: '/images/albums/vertigo/drone_dub.gif'
+                }, {
+                    name: 'Fat Cat',
+                    img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                    src: '/audio/vertigo/09.fat.cat.mp3',
+                    visual: '/images/albums/vertigo/fat_cat.gif'
+                }, {
+                    name: 'Laird',
+                    img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                    src: '/audio/vertigo/10.laird.mp3',
+                    visual: '/images/albums/vertigo/laird.gif'
+                }, {
+                    name: 'Your own soul',
+                    img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                    src: '/audio/vertigo/11.your_own_soul.mp3',
+                    visual: '/images/albums/vertigo/your_own_soul.gif'
+                }, {
+                    name: 'Silensia',
+                    img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                    src: '/audio/vertigo/12.silensia.mp3',
+                    visual: '/images/albums/vertigo/silensia.gif'
+                }, {
+                    name: 'One of Us',
+                    img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                    src: '/audio/vertigo/13.one_of_us.mp3',
+                    visual: '/images/albums/vertigo/one_of_us.gif'
+                }]
             }, {
+                active: true,
                 name: 'Point C',
                 year: '2015',
                 source: '/audio/point_c/',
@@ -156,9 +168,36 @@ class AudioPlayer extends Component {
                         img: '/images/albums/point_c/point_c_cover.jpg',
                         src: '/audio/point_c/09_XC.mp3',
                         visual: '/images/albums/point_c/xc.gif',
-
                     }]
-            },]
+            }, {
+                name: 'Roots',
+                active: false,
+                year: '2017',
+                source: '/audio/roots/',
+                album_cover: '/images/albums/roots/roots_cover.jpg',
+                album_gif: '/images/albums/roots/roots.gif',
+                playlist: [{
+                    name: 'Roots',
+                    img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                    src: '/audio/vertigo/roots.mp3',
+                    visual: '/images/albums/vertigo/roots.gif'
+                }, {
+                    name: 'Talk Our Lives',
+                    img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                    src: '/audio/vertigo/talk_our_lives.mp3',
+                    visual: '/images/albums/vertigo/talk_our_lives.gif'
+                }, {
+                    name: 'Yes Today, No Tomorrow',
+                    img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                    src: '/audio/vertigo/yes_today_no_tomorrow.mp3',
+                    visual: '/images/albums/vertigo/yes_today_no_tomorrow.gif'
+                }, {
+                    name: 'Polaris',
+                    img: '/images/albums/vertigo/square_vertigo_monoton_all.jpg',
+                    src: '/audio/vertigo/polaris.mp3',
+                    visual: '/images/albums/vertigo/polaris.gif'
+                }]
+            }]
         };
         this.updateDimensions = this.updateDimensions.bind(this);
         this.showGIF = this.showGIF.bind(this);
@@ -236,7 +275,7 @@ class AudioPlayer extends Component {
                      onMouseLeave={(e) => {
                          this.props.enableScroll(e)
                      }}>
-                    {this.state.albums.map((album) => {
+                    {this.state.albums.filter(album => album.active === true).map((album) => {
                         return this.generateAlbumPlaylist(album)
                     })}
                 </div>

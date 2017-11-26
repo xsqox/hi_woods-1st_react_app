@@ -88,7 +88,7 @@
 }
 
 .hw-playlist-container {
-  flex: 0 0 210px;
+  flex: 0 0 230px;
   margin: 10px;
   overflow-y: auto;
   overflow-x: hidden;
@@ -232,7 +232,7 @@
     height: 11px;
     display: inline-block;
     position: absolute;
-    top: -3px;
+    top: -5px;
     left: -6px;
     border-left: 2px solid $lightFont;
     margin-bottom: 3px;
@@ -243,7 +243,7 @@
     width: 7px;
     height: 11px;
     display: inline-block;
-    top: -3px;
+    top: -5px;
     left: -1px;
     position: absolute;
     border-left: 2px solid $lightFont;
